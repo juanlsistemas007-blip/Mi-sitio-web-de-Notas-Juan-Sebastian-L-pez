@@ -9,7 +9,8 @@
 
 <meta name="theme-color" content="#7b102c">
 
-<meta name="description" content="Mi Bloc de Notas personal">
+<meta name="description"
+content="Mi Bloc de Notas personal">
 
 <link rel="stylesheet" href="estilo.css">
 
@@ -32,18 +33,26 @@
     <div class="foto-perfil">
 
         <img
-            src="perfil.jpg"
+            src="logotipe.jpg"
             alt="Foto de perfil de Juan Sebastian López"
         >
 
     </div>
 
 
-    <h1>📖 Mi Bloc de Notas</h1>
+    <h1>
+        📖 Mi Bloc de Notas
+    </h1>
 
-    <p>Juan Sebastian López</p>
 
-    <p>Guarda tus ideas, proyectos y pensamientos</p>
+    <p>
+        Juan Sebastian López
+    </p>
+
+
+    <p>
+        Guarda tus ideas, proyectos y pensamientos
+    </p>
 
 </header>
 
@@ -58,7 +67,9 @@
 
     <section class="caja">
 
-        <h2>✍️ Nueva nota</h2>
+        <h2>
+            ✍️ Nueva nota
+        </h2>
 
 
         <input
@@ -90,13 +101,13 @@
 
     <section class="caja asistente">
 
-        <h2>🤖 Asistente de mis notas</h2>
+        <h2>
+            🤖 Asistente de mis notas
+        </h2>
 
 
         <p>
-
             Pregunta sobre las notas que has guardado.
-
         </p>
 
 
@@ -119,7 +130,8 @@
 
         <div id="respuesta">
 
-            👋 Hola Juan. Guarda algunas notas y después puedes preguntarme sobre lo que escribiste.
+            👋 Hola Juan. Guarda algunas notas y después
+            puedes preguntarme sobre lo que escribiste.
 
         </div>
 
@@ -133,7 +145,9 @@
 
     <section class="caja">
 
-        <h2>📚 Mis notas</h2>
+        <h2>
+            📚 Mis notas
+        </h2>
 
 
         <div
@@ -158,13 +172,16 @@
 
     <section class="caja">
 
-        <h2>📱 Instalar aplicación</h2>
+        <h2>
+            📱 Instalar aplicación
+        </h2>
 
 
         <p>
 
-            Puedes añadir este Bloc de Notas a la pantalla de inicio
-            de tu celular o instalarlo en un computador compatible.
+            Puedes añadir este Bloc de Notas a la pantalla
+            de inicio de tu celular o instalarlo en un
+            computador compatible.
 
         </p>
 
@@ -200,16 +217,24 @@
 
 <script>
 
-
 /* =========================
    CARGAR NOTAS
 ========================= */
 
-let notas = JSON.parse(
+let notas = [];
 
-    localStorage.getItem("misNotas")
+try {
 
-) || [];
+    notas =
+        JSON.parse(
+            localStorage.getItem("misNotas")
+        ) || [];
+
+} catch (error) {
+
+    notas = [];
+
+}
 
 
 
@@ -219,127 +244,97 @@ let notas = JSON.parse(
 
 function mostrarNotas() {
 
+    const lista =
+        document.getElementById("listaNotas");
 
-    const lista = document.getElementById("listaNotas");
-
-
-    const contador = document.getElementById("contador");
+    const contador =
+        document.getElementById("contador");
 
 
     lista.innerHTML = "";
 
 
-
     if (notas.length === 0) {
 
-
         lista.innerHTML =
-
             "<p>📭 No hay notas todavía. Crea tu primera nota.</p>";
 
-
         contador.innerText =
-
             "Aún no tienes notas guardadas.";
 
-
         return;
-
     }
 
 
-
     contador.innerText =
-
         "📚 Tienes " +
-
         notas.length +
-
         " nota(s) guardada(s).";
-
 
 
     notas.forEach(function(nota, indice) {
 
 
-        const tarjeta = document.createElement("div");
-
+        const tarjeta =
+            document.createElement("div");
 
         tarjeta.className = "nota";
 
 
-
-        const titulo = document.createElement("h3");
-
+        const titulo =
+            document.createElement("h3");
 
         titulo.innerText =
-
             (indice + 1) +
-
             ". " +
-
             nota.titulo;
 
 
+        const contenido =
+            document.createElement("p");
 
-        const contenido = document.createElement("p");
+        contenido.innerText =
+            nota.contenido;
 
 
-        contenido.innerText = nota.contenido;
-
-
-
-        const fecha = document.createElement("div");
-
+        const fecha =
+            document.createElement("div");
 
         fecha.className = "fecha";
 
-
         fecha.innerText =
-
             "📅 " +
-
             nota.fecha;
 
 
+        const eliminar =
+            document.createElement("button");
 
-        const eliminar = document.createElement("button");
-
-
-        eliminar.className = "boton-rojo";
-
+        eliminar.className =
+            "boton-rojo";
 
         eliminar.innerText =
-
             "🗑 Eliminar";
 
 
+        eliminar.onclick =
+            function() {
 
-        eliminar.onclick = function() {
+                eliminarNota(indice);
 
-
-            eliminarNota(indice);
-
-
-        };
-
+            };
 
 
         tarjeta.appendChild(titulo);
 
-
         tarjeta.appendChild(contenido);
 
-
         tarjeta.appendChild(fecha);
-
 
         tarjeta.appendChild(eliminar);
 
 
-
         lista.appendChild(tarjeta);
-
 
     });
 
@@ -353,58 +348,42 @@ function mostrarNotas() {
 
 function guardarNota() {
 
-
     const titulo =
-
         document.getElementById("titulo");
 
-
     const contenido =
-
         document.getElementById("contenido");
 
 
-
     if (
-
         titulo.value.trim() === "" ||
-
         contenido.value.trim() === ""
-
     ) {
 
-
         alert(
-
             "⚠️ Escribe un título y el contenido."
-
         );
 
-
         return;
-
     }
-
 
 
     const nuevaNota = {
 
+        titulo:
+            titulo.value.trim(),
 
-        titulo: titulo.value.trim(),
+        contenido:
+            contenido.value.trim(),
 
-
-        contenido: contenido.value.trim(),
-
-
-        fecha: new Date().toLocaleString("es-CO")
-
+        fecha:
+            new Date()
+            .toLocaleString("es-CO")
 
     };
 
 
-
     notas.unshift(nuevaNota);
-
 
 
     localStorage.setItem(
@@ -416,22 +395,19 @@ function guardarNota() {
     );
 
 
-
     titulo.value = "";
-
 
     contenido.value = "";
 
+
+    aumentarInteracciones();
 
 
     mostrarNotas();
 
 
-
     alert(
-
         "✅ Nota guardada correctamente."
-
     );
 
 }
@@ -444,13 +420,10 @@ function guardarNota() {
 
 function eliminarNota(indice) {
 
-
-    const confirmar = confirm(
-
-        "¿Seguro que deseas eliminar esta nota?"
-
-    );
-
+    const confirmar =
+        confirm(
+            "¿Seguro que deseas eliminar esta nota?"
+        );
 
 
     if (!confirmar) {
@@ -460,9 +433,7 @@ function eliminarNota(indice) {
     }
 
 
-
     notas.splice(indice, 1);
-
 
 
     localStorage.setItem(
@@ -474,7 +445,6 @@ function eliminarNota(indice) {
     );
 
 
-
     mostrarNotas();
 
 }
@@ -482,180 +452,138 @@ function eliminarNota(indice) {
 
 
 /* =========================
-   ASISTENTE DE NOTAS
+   ASISTENTE
 ========================= */
 
 function preguntarAsistente() {
 
-
     const pregunta =
-
         document
-
         .getElementById("pregunta")
-
         .value
-
         .trim()
-
         .toLowerCase();
 
 
-
     const respuesta =
-
-        document.getElementById("respuesta");
-
+        document
+        .getElementById("respuesta");
 
 
     if (pregunta === "") {
 
-
         respuesta.innerHTML =
-
             "✍️ Escribe una pregunta.";
 
-
         return;
-
     }
-
 
 
     if (notas.length === 0) {
 
-
         respuesta.innerHTML =
-
             "📭 Aún no tienes notas guardadas.";
 
-
         return;
-
     }
 
 
-
     const palabras =
-
         pregunta
-
         .split(" ")
-
         .filter(function(palabra) {
-
 
             return palabra.length > 3;
 
-
         });
-
 
 
     let resultados = [];
 
 
-
     notas.forEach(function(nota) {
 
-
         const texto =
-
             (
-
                 nota.titulo +
-
                 " " +
-
                 nota.contenido
-
             )
-
             .toLowerCase();
-
 
 
         let puntos = 0;
 
 
-
         palabras.forEach(function(palabra) {
 
-
-            if (texto.includes(palabra)) {
-
+            if (
+                texto.includes(palabra)
+            ) {
 
                 puntos++;
-
 
             }
 
         });
 
 
-
         if (puntos > 0) {
-
 
             resultados.push({
 
-
                 nota: nota,
-
 
                 puntos: puntos
 
-
             });
-
 
         }
 
     });
 
 
+    resultados.sort(
+        function(a, b) {
 
-    resultados.sort(function(a, b) {
+            return b.puntos - a.puntos;
 
-
-        return b.puntos - a.puntos;
-
-
-    });
-
+        }
+    );
 
 
     if (resultados.length === 0) {
 
-
         respuesta.innerHTML =
-
-            "🤔 No encontré una nota relacionada. Prueba con otras palabras.";
-
+            "🤔 No encontré una nota relacionada. " +
+            "Prueba con otras palabras.";
 
         return;
-
     }
 
 
-
-    const mejor = resultados[0].nota;
-
+    const mejor =
+        resultados[0].nota;
 
 
     respuesta.innerHTML =
-
-        "🤖 Encontré información relacionada en la nota:<br><br>" +
-
+        "🤖 Encontré información relacionada " +
+        "en la nota:<br><br>" +
 
         "<strong>" +
 
-        escaparHTML(mejor.titulo) +
+        escaparHTML(
+            mejor.titulo
+        ) +
 
         "</strong><br><br>" +
 
+        escaparHTML(
+            mejor.contenido
+        );
 
-        escaparHTML(mejor.contenido);
+
+    aumentarInteracciones();
 
 }
 
@@ -667,14 +595,92 @@ function preguntarAsistente() {
 
 function escaparHTML(texto) {
 
+    const div =
+        document.createElement("div");
 
-    const div = document.createElement("div");
 
-
-    div.textContent = texto;
+    div.textContent =
+        texto;
 
 
     return div.innerHTML;
+
+}
+
+
+
+/* =========================
+   CONTADOR DE INTERACCIONES
+========================= */
+
+function aumentarInteracciones() {
+
+    let cantidad =
+        parseInt(
+            localStorage.getItem(
+                "contadorInteraccionesDemo"
+            ) || "0"
+        );
+
+
+    cantidad++;
+
+
+    localStorage.setItem(
+
+        "contadorInteraccionesDemo",
+
+        cantidad
+
+    );
+
+}
+
+
+
+/* =========================
+   CONTADOR DE VISITAS
+========================= */
+
+function registrarVisita() {
+
+    const yaContada =
+        sessionStorage.getItem(
+            "visitaRegistrada"
+        );
+
+
+    if (!yaContada) {
+
+        let visitas =
+            parseInt(
+                localStorage.getItem(
+                    "contadorVisitasDemo"
+                ) || "0"
+            );
+
+
+        visitas++;
+
+
+        localStorage.setItem(
+
+            "contadorVisitasDemo",
+
+            visitas
+
+        );
+
+
+        sessionStorage.setItem(
+
+            "visitaRegistrada",
+
+            "si"
+
+        );
+
+    }
 
 }
 
@@ -686,30 +692,23 @@ function escaparHTML(texto) {
 
 function mostrarInstalacion() {
 
-
     alert(
-
 
         "📱 EN CELULAR\n\n" +
 
+        "1. Abre el sitio en Google Chrome.\n\n" +
 
-        "1. Abre el sitio en Google Chrome.\n" +
+        "2. Toca los tres puntos ⋮.\n\n" +
 
-
-        "2. Toca los tres puntos ⋮.\n" +
-
-
-        "3. Pulsa 'Añadir a pantalla de inicio' o 'Instalar aplicación'.\n" +
-
+        "3. Pulsa 'Añadir a pantalla de inicio' " +
+        "o 'Instalar aplicación'.\n\n" +
 
         "4. Confirma la instalación.\n\n" +
 
-
         "💻 EN COMPUTADOR\n\n" +
 
-
-        "Busca el icono de instalación en la barra de direcciones de Chrome."
-
+        "Busca el icono de instalación en la " +
+        "barra de direcciones de Chrome."
 
     );
 
@@ -721,8 +720,9 @@ function mostrarInstalacion() {
    INICIAR
 ========================= */
 
-mostrarNotas();
+registrarVisita();
 
+mostrarNotas();
 
 </script>
 
