@@ -592,3 +592,311 @@ footer {
     }
 
 }
+
+/* =====================================
+   FOTO JS CUANDO NO HAY FOTO
+===================================== */
+
+.profile {
+    position: relative;
+}
+
+.profile-js {
+    width: 100%;
+    height: 100%;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle,
+            #500025,
+            #18000d
+        );
+
+    color: #d4af37;
+
+    font-family: cursive;
+
+    font-size: 65px;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 0 8px rgba(212,175,55,.6);
+
+    letter-spacing: -8px;
+}
+
+
+/* =====================================
+   PRIVACIDAD DEL ASISTENTE
+===================================== */
+
+.privacy-text {
+    color: #f0d98a;
+
+    border: 1px solid
+        rgba(212,175,55,.45);
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    background:
+        rgba(0,0,0,.20);
+
+    line-height: 1.6;
+
+    text-align: center;
+}
+
+
+/* =====================================
+   PANEL ADMINISTRADOR
+===================================== */
+
+.admin-page {
+    min-height: 100vh;
+}
+
+
+/* Encabezado especial del administrador */
+
+.admin-top {
+    position: relative;
+
+    width: 94%;
+
+    max-width: 950px;
+
+    margin: 25px auto;
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    border: 2px solid #d4af37;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #520026,
+            #260012,
+            #4b0025
+        );
+
+    box-shadow:
+        0 0 30px
+        rgba(212,175,55,.25);
+}
+
+
+.admin-top h1 {
+    color: #d4af37;
+
+    font-size:
+        clamp(28px, 6vw, 44px);
+
+    margin-top: 15px;
+}
+
+
+.admin-top p {
+    color: #f5df9c;
+
+    font-size: 19px;
+
+    margin-top: 8px;
+}
+
+
+/* Icono JS del administrador */
+
+.admin-logo {
+    width: 100px;
+
+    height: 100px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle,
+            #5b002c,
+            #18000d
+        );
+
+    border: 4px solid #d4af37;
+
+    color: #d4af37;
+
+    font-family: cursive;
+
+    font-size: 42px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 0 25px
+        rgba(212,175,55,.30);
+
+    text-shadow:
+        0 0 10px
+        rgba(212,175,55,.5);
+}
+
+
+/* Tarjetas del administrador */
+
+.admin-card {
+    width: 94%;
+
+    max-width: 950px;
+
+    margin: 20px auto;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    border: 2px solid #d4af37;
+
+    background:
+        linear-gradient(
+            145deg,
+            #430020,
+            #21000f
+        );
+
+    box-shadow:
+        0 0 20px
+        rgba(212,175,55,.16);
+}
+
+
+.admin-card h2 {
+    text-align: center;
+
+    color: #d4af37;
+
+    font-size: 28px;
+
+    margin-bottom: 15px;
+}
+
+
+.admin-card p {
+    text-align: center;
+
+    color: #f4e4ae;
+
+    line-height: 1.6;
+
+    font-size: 17px;
+}
+
+
+/* Botones del administrador */
+
+.admin-actions {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                190px,
+                1fr
+            )
+        );
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+
+.admin-action {
+    min-height: 80px;
+
+    padding: 15px;
+
+    border-radius: 15px;
+
+    border: 2px solid #d4af37;
+
+    background:
+        linear-gradient(
+            145deg,
+            #57002a,
+            #260012
+        );
+
+    color: #f3d77b;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+
+.admin-action:hover {
+    background:
+        linear-gradient(
+            145deg,
+            #720039,
+            #360019
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(212,175,55,.25);
+}
+
+
+/* Administrador en celular */
+
+@media (max-width: 600px) {
+
+    .admin-top {
+        width: 94%;
+
+        margin-top: 12px;
+
+        padding: 25px 15px;
+    }
+
+
+    .admin-logo {
+        width: 85px;
+
+        height: 85px;
+
+        font-size: 36px;
+    }
+
+
+    .admin-card {
+        width: 94%;
+
+        padding: 18px 14px;
+    }
+
+
+    .admin-actions {
+        grid-template-columns: 1fr;
+    }
+
+}
