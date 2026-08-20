@@ -1,0 +1,540 @@
+/* =========================================
+   MI BLOC DE NOTAS - JUAN SEBASTIAN LÓPEZ
+   DISEÑO ROJO RUBÍ + DORADO
+========================================= */
+
+/* ---------- GENERAL ---------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: #ffffff;
+
+    background-color: #4b071b;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255, 215, 120, 0.38) 1px,
+            transparent 1.5px
+        );
+
+    background-size: 28px 28px;
+}
+
+
+/* =========================================
+   ENCABEZADO
+========================================= */
+
+header {
+    width: 100%;
+
+    text-align: center;
+
+    padding: 25px 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a0153b,
+            #520018,
+            #8d1235
+        );
+
+    border-bottom: 2px solid #e7bd57;
+
+    box-shadow:
+        0 5px 25px rgba(0, 0, 0, 0.50);
+}
+
+
+/* =========================================
+   FOTO DE PERFIL
+========================================= */
+
+.foto-perfil {
+    width: 180px;
+    height: 180px;
+
+    margin: 0 auto 18px;
+
+    overflow: hidden;
+
+    border: 4px solid #ffd978;
+
+    border-radius: 50%;
+
+    background: #30000f;
+
+    box-shadow:
+        0 0 20px rgba(255, 217, 120, 0.65),
+        0 0 45px rgba(180, 0, 50, 0.50);
+}
+
+.foto-perfil img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    /*
+    =====================================
+    AJUSTE DE TU FOTO
+    =====================================
+
+    Primer valor:
+    IZQUIERDA -------- CENTRO -------- DERECHA
+
+    Segundo valor:
+    ARRIBA -------- CENTRO -------- ABAJO
+
+    Puedes cambiar:
+    50% 20%
+    50% 30%
+    40% 20%
+    60% 15%
+    */
+
+    object-position: 50% 20%;
+
+    /*
+    ZOOM DE LA FOTO
+
+    1 = tamaño normal
+    1.1 = un poco más cerca
+    1.2 = más cerca
+    1.3 = recomendado
+    1.5 = muy cerca
+    */
+
+    transform: scale(1.15);
+}
+
+
+/* =========================================
+   TEXTOS DEL HEADER
+========================================= */
+
+header h1 {
+    margin: 5px 0;
+
+    color: #ffd978;
+
+    font-size: clamp(27px, 5vw, 44px);
+
+    text-shadow:
+        0 0 12px rgba(255, 217, 120, 0.25);
+}
+
+header p {
+    margin: 8px 0 0;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+========================================= */
+
+.contenedor {
+    width: 92%;
+
+    max-width: 1100px;
+
+    margin: 30px auto;
+}
+
+
+/* =========================================
+   CAJAS
+========================================= */
+
+.caja {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(125, 15, 50, 0.97),
+            rgba(60, 4, 22, 0.97)
+        );
+
+    border: 1px solid #e7bd57;
+
+    border-radius: 20px;
+
+    padding: 24px;
+
+    margin-bottom: 25px;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.42);
+}
+
+.caja h2 {
+    margin-top: 0;
+
+    color: #ffd978;
+
+    font-size: clamp(21px, 4vw, 28px);
+}
+
+.caja p {
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   CAMPOS DE TEXTO
+========================================= */
+
+input,
+textarea {
+    width: 100%;
+
+    background: rgba(15, 0, 6, 0.60);
+
+    color: #ffffff;
+
+    border: 1px solid #e7bd57;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    margin-top: 10px;
+    margin-bottom: 15px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+input:focus,
+textarea:focus {
+    border-color: #fff1b0;
+
+    box-shadow:
+        0 0 16px rgba(255, 217, 120, 0.30);
+}
+
+textarea {
+    min-height: 180px;
+
+    resize: vertical;
+}
+
+
+/* =========================================
+   BOTONES
+========================================= */
+
+button {
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 14px 20px;
+
+    margin: 4px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe28a,
+            #c8942f
+        );
+
+    color: #3b0616;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.2s,
+        filter 0.2s;
+}
+
+button:hover {
+    transform: scale(1.03);
+
+    filter: brightness(1.10);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+
+/* BOTÓN ROJO */
+
+.boton-rojo {
+    background:
+        linear-gradient(
+            135deg,
+            #e04461,
+            #8d1235
+        );
+
+    color: #ffffff;
+}
+
+
+/* BOTÓN VERDE */
+
+.boton-verde {
+    background:
+        linear-gradient(
+            135deg,
+            #65d889,
+            #238348
+        );
+
+    color: #ffffff;
+}
+
+
+/* =========================================
+   ASISTENTE
+========================================= */
+
+.asistente {
+    border: 2px solid #ffd978;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.asistente::before {
+    content: "✦";
+
+    position: absolute;
+
+    top: 8px;
+    right: 18px;
+
+    font-size: 48px;
+
+    color: rgba(255, 217, 120, 0.20);
+}
+
+#respuesta {
+    margin-top: 15px;
+
+    min-height: 70px;
+
+    padding: 17px;
+
+    background: rgba(0, 0, 0, 0.32);
+
+    border: 1px solid rgba(255, 217, 120, 0.25);
+
+    border-radius: 14px;
+
+    line-height: 1.6;
+
+    color: #fff4c8;
+}
+
+
+/* =========================================
+   CONTADOR
+========================================= */
+
+.contador {
+    color: #ffd978;
+
+    font-size: 15px;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================
+   LISTA DE NOTAS
+========================================= */
+
+#listaNotas {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: 18px;
+}
+
+
+/* =========================================
+   TARJETA DE NOTA
+========================================= */
+
+.nota {
+    background:
+        linear-gradient(
+            145deg,
+            #8a1437,
+            #480318
+        );
+
+    border: 1px solid #e7bd57;
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    word-break: break-word;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.30);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.nota:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 13px 30px rgba(0, 0, 0, 0.40);
+}
+
+.nota h3 {
+    margin-top: 0;
+
+    color: #ffe59b;
+
+    font-size: 21px;
+}
+
+.nota p {
+    white-space: pre-wrap;
+
+    line-height: 1.65;
+
+    color: #ffffff;
+}
+
+.fecha {
+    color: #ffd978;
+
+    font-size: 12px;
+
+    margin-top: 16px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    text-align: center;
+
+    padding: 35px 15px;
+
+    color: #ffe7a5;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 800px) {
+
+    .contenedor {
+        width: 94%;
+    }
+
+    .foto-perfil {
+        width: 165px;
+        height: 165px;
+    }
+
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 22px 12px;
+    }
+
+    .contenedor {
+        width: 94%;
+
+        margin: 20px auto;
+    }
+
+    .caja {
+        padding: 17px;
+
+        border-radius: 17px;
+    }
+
+    .foto-perfil {
+        width: 145px;
+        height: 145px;
+
+        border-width: 3px;
+    }
+
+    button {
+        width: 100%;
+
+        margin: 5px 0;
+
+        padding: 15px;
+    }
+
+    #listaNotas {
+        grid-template-columns: 1fr;
+    }
+
+    .nota {
+        padding: 17px;
+    }
+
+}

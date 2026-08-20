@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#5b061c">
+
+<meta name="description"
+content="Panel administrador de Juan Sebastian López">
+
+<title>Panel Administrador | Juan Sebastian López</title>
+
+<style>
+
+/* ========================================
+   GENERAL
+======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: white;
+
+    background-color: #21000b;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255, 190, 60, 0.35) 1px,
+            transparent 1.5px
+        );
+
+    background-size: 30px 30px;
+}
+
+
+/* ========================================
+   ACCESO
+======================================== */
+
+#acceso {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #7d1234,
+            #26000d 70%
+        );
+
+    overflow-y: auto;
+}
+
+
+.caja-login {
+
+    width: 100%;
+
+    max-width: 420px;
+
+    text-align: center;
+
+    padding: 35px 25px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #650c27,
+            #230008
+        );
+
+    border: 2px solid #e8b84f;
+
+    box-shadow:
+        0 0 30px rgba(255, 190, 60, 0.35),
+        0 20px 60px rgba(0,0,0,0.7);
+}
+
+
+.logo-login {
+
+    width: 150px;
+
+    height: 150px;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    border-radius: 25px;
+
+    border: 3px solid #ffd978;
+
+    box-shadow:
+        0 0 25px rgba(255, 0, 70, 0.5);
+
+    margin-bottom: 15px;
+}
+
+
+.caja-login h1 {
+
+    color: #ffd978;
+
+    font-size: 26px;
+
+    margin: 10px 0;
+}
+
+
+.caja-login p {
+
+    color: #ffe8a8;
+
+    line-height: 1.5;
+}
+
+
+#error {
+
+    color: #ff8fa8;
+
+    min-height: 24px;
+
+    font-weight: bold;
+}
+
+
+/* ========================================
+   CAMPOS
+======================================== */
+
+input {
+
+    width: 100%;
+
+    padding: 15px;
+
+    margin: 12px 0;
+
+    border-radius: 12px;
+
+    border: 1px solid #e8b84f;
+
+    background: #160005;
+
+    color: white;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+
+input::placeholder {
+
+    color: rgba(255,255,255,0.65);
+}
+
+
+input:focus {
+
+    border-color: #fff3bb;
+
+    box-shadow:
+        0 0 15px rgba(255,217,120,0.4);
+}
+
+
+/* ========================================
+   BOTONES
+======================================== */
+
+button {
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 14px 20px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    font-size: 15px;
+
+    margin: 4px;
+
+    transition: 0.2s;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe294,
+            #bb791d
+        );
+
+    color: #37000f;
+}
+
+
+button:hover {
+
+    transform: scale(1.03);
+}
+
+
+button:active {
+
+    transform: scale(0.98);
+}
+
+
+.rojo {
+
+    background:
+        linear-gradient(
+            135deg,
+            #e1395d,
+            #7d0827
+        );
+
+    color: white;
+}
+
+
+.verde {
+
+    background:
+        linear-gradient(
+            135deg,
+            #6de09a,
+            #197342
+        );
+
+    color: white;
+}
+
+
+/* ========================================
+   PANEL
+======================================== */
+
+#panel {
+
+    display: none;
+
+    min-height: 100vh;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+header {
+
+    text-align: center;
+
+    padding: 25px 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7b0d2d,
+            #230008,
+            #8d1235
+        );
+
+    border-bottom: 2px solid #e8b84f;
+
+    box-shadow:
+        0 5px 25px rgba(0,0,0,0.6);
+}
+
+
+.logo {
+
+    width: 100px;
+
+    height: 100px;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    border-radius: 20px;
+
+    border: 2px solid #ffd978;
+}
+
+
+header h1 {
+
+    color: #ffd978;
+
+    margin: 10px 0 5px;
+
+    font-size: clamp(24px, 5vw, 38px);
+}
+
+
+header p {
+
+    color: #ffe8a8;
+
+    margin: 8px 0;
+}
+
+
+/* ========================================
+   CONTENEDOR
+======================================== */
+
+.contenedor {
+
+    width: 92%;
+
+    max-width: 1200px;
+
+    margin: 30px auto;
+}
+
+
+/* ========================================
+   ESTADÍSTICAS
+======================================== */
+
+.estadisticas {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(200px, 1fr));
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+
+.tarjeta {
+
+    padding: 25px;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #7b1031,
+            #31000f
+        );
+
+    border: 1px solid #e8b84f;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.4);
+}
+
+
+.tarjeta .icono {
+
+    font-size: 45px;
+}
+
+
+.numero {
+
+    display: block;
+
+    margin: 12px 0;
+
+    font-size: 38px;
+
+    font-weight: bold;
+
+    color: #ffe082;
+}
+
+
+.descripcion {
+
+    color: #ffffff;
+}
+
+
+/* ========================================
+   CAJAS
+======================================== */
+
+.caja {
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #690d29,
+            #29000d
+        );
+
+    border: 1px solid #e8b84f;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.4);
+}
+
+
+.caja h2 {
+
+    color: #ffd978;
+
+    margin-top: 0;
+}
+
+
+.caja p {
+
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   LISTA
+======================================== */
+
+.lista {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.elemento {
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    background: rgba(0,0,0,0.3);
+
+    border-left: 4px solid #e8b84f;
+
+    line-height: 1.6;
+}
+
+
+.elemento strong {
+
+    color: #ffd978;
+}
+
+
+/* ========================================
+   AVISO
+======================================== */
+
+.aviso {
+
+    padding: 18px;
+
+    border-radius: 14px;
+
+    background: rgba(255, 210, 100, 0.12);
+
+    border: 1px solid #d9a83c;
+
+    color: #fff0bb;
+
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+footer {
+
+    text-align: center;
+
+    padding: 30px;
+
+    color: #ffd978;
+}
+
+
+/* ========================================
+   CELULAR
+======================================== */
+
+@media (max-width: 600px) {
+
+    .contenedor {
+
+        width: 94%;
+
+        margin: 20px auto;
+    }
+
+
+    .caja {
+
+        padding: 18px;
+    }
+
+
+    .estadisticas {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .tarjeta {
+
+        padding: 20px;
+    }
+
+
+    button {
+
+        width: 100%;
+
+        margin: 5px 0;
+    }
+
+
+    .caja-login {
+
+        padding: 28px 18px;
+    }
+
+
+    .logo-login {
+
+        width: 125px;
+
+        height: 125px;
+    }
+
+}
+
+
+/* ========================================
+   CELULAR PEQUEÑO
+======================================== */
+
+@media (max-width: 380px) {
+
+    .caja-login h1 {
+
+        font-size: 22px;
+    }
+
+
+    .logo-login {
+
+        width: 110px;
+
+        height: 110px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ========================================
+     ACCESO ADMINISTRADOR
+======================================== -->
+
+<div id="acceso">
+
+    <div class="caja-login">
+
+
+        <img
+            src="icono.jpg"
+            class="logo-login"
+            alt="Juan Sebastian López"
+        >
+
+
+        <h1>
+            👑 Panel Administrador
+        </h1>
+
+
+        <p>
+
+            Acceso privado de
+
+            <br>
+
+            <strong>
+                Juan Sebastian López
+            </strong>
+
+        </p>
+
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Introduce tu contraseña"
+            autocomplete="current-password"
+        >
+
+
+        <button onclick="entrar()">
+
+            🔐 Entrar al panel
+
+        </button>
+
+
+        <p id="error"></p>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ========================================
+     PANEL PRINCIPAL
+======================================== -->
+
+<div id="panel">
+
+
+<header>
+
+
+    <img
+        src="icono.jpg"
+        class="logo"
+        alt="Logo Juan Sebastian López"
+    >
+
+
+    <h1>
+        👑 Panel de Administración
+    </h1>
+
+
+    <p>
+        Juan Sebastian López
+    </p>
+
+
+    <p>
+        Bloc de Notas Rubí
+    </p>
+
+
+</header>
+
+
+
+<main class="contenedor">
+
+
+<!-- ========================================
+     ESTADÍSTICAS
+======================================== -->
+
+<section class="estadisticas">
+
+
+    <div class="tarjeta">
+
+        <div class="icono">
+            👥
+        </div>
+
+        <span
+            class="numero"
+            id="visitas"
+        >
+            0
+        </span>
+
+        <span class="descripcion">
+            Visitas registradas
+        </span>
+
+    </div>
+
+
+
+    <div class="tarjeta">
+
+        <div class="icono">
+            📝
+        </div>
+
+        <span
+            class="numero"
+            id="interacciones"
+        >
+            0
+        </span>
+
+        <span class="descripcion">
+            Interacciones
+        </span>
+
+    </div>
+
+
+
+    <div class="tarjeta">
+
+        <div class="icono">
+            📱
+        </div>
+
+        <span
+            class="numero"
+            id="dispositivo"
+        >
+            --
+        </span>
+
+        <span class="descripcion">
+            Tu dispositivo
+        </span>
+
+    </div>
+
+
+
+    <div class="tarjeta">
+
+        <div class="icono">
+            📅
+        </div>
+
+        <span
+            class="numero"
+            id="fecha"
+        >
+            --
+        </span>
+
+        <span class="descripcion">
+            Fecha actual
+        </span>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ========================================
+     ACTIVIDAD
+======================================== -->
+
+<section class="caja">
+
+    <h2>
+        📊 Actividad del panel
+    </h2>
+
+
+    <div
+        class="lista"
+        id="actividad"
+    >
+
+        <div class="elemento">
+
+            <strong>
+                👑 Administrador:
+            </strong>
+
+            Panel iniciado correctamente.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================
+     CONTROL
+======================================== -->
+
+<section class="caja">
+
+    <h2>
+        ⚙️ Control del administrador
+    </h2>
+
+
+    <p>
+
+        Desde aquí podrás controlar y consultar
+        la información de tu sitio.
+
+    </p>
+
+
+    <button
+        class="verde"
+        onclick="actualizarDatos()"
+    >
+
+        🔄 Actualizar panel
+
+    </button>
+
+
+    <button
+        class="rojo"
+        onclick="cerrarSesion()"
+    >
+
+        🔒 Cerrar sesión
+
+    </button>
+
+</section>
+
+
+
+<!-- ========================================
+     INFORMACIÓN
+======================================== -->
+
+<section class="caja">
+
+    <h2>
+        📈 Estadísticas
+    </h2>
+
+
+    <div class="aviso">
+
+        Este panel funciona sin Firebase.
+
+        <br><br>
+
+        Los datos guardados con localStorage
+        pertenecen al navegador donde fueron
+        registrados.
+
+        <br><br>
+
+        Para obtener estadísticas globales de
+        todos los visitantes se necesitaría
+        un sistema externo de estadísticas
+        o un servidor.
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+    👑 © 2026 Juan Sebastian López
+
+    <br><br>
+
+    Panel privado · Diseño Rubí y Oro ❤️✨
+
+</footer>
+
+
+</div>
+
+
+
+<script>
+
+/* ========================================
+   CONTRASEÑA
+======================================== */
+
+const CONTRASENA = "JuanRubi2026";
+
+
+/* ========================================
+   ENTRAR
+======================================== */
+
+function entrar() {
+
+    const campoPassword =
+        document.getElementById("password");
+
+
+    const error =
+        document.getElementById("error");
+
+
+    const password =
+        campoPassword.value;
+
+
+    if (password === CONTRASENA) {
+
+
+        document
+        .getElementById("acceso")
+        .style.display = "none";
+
+
+        document
+        .getElementById("panel")
+        .style.display = "block";
+
+
+        sessionStorage.setItem(
+            "adminActivo",
+            "si"
+        );
+
+
+        registrarActividad(
+            "👑 Administrador ingresó al panel."
+        );
+
+
+        actualizarDatos();
+
+
+    } else {
+
+
+        error.innerText =
+            "❌ Contraseña incorrecta.";
+
+
+        campoPassword.value = "";
+
+
+        campoPassword.focus();
+
+    }
+
+}
+
+
+/* ========================================
+   CERRAR SESIÓN
+======================================== */
+
+function cerrarSesion() {
+
+    sessionStorage.removeItem(
+        "adminActivo"
+    );
+
+
+    document
+    .getElementById("panel")
+    .style.display = "none";
+
+
+    document
+    .getElementById("acceso")
+    .style.display = "flex";
+
+
+    document
+    .getElementById("password")
+    .value = "";
+
+
+    document
+    .getElementById("error")
+    .innerText = "";
+
+}
+
+
+/* ========================================
+   REGISTRAR ACTIVIDAD
+======================================== */
+
+function registrarActividad(texto) {
+
+    let actividades = [];
+
+
+    try {
+
+        actividades =
+            JSON.parse(
+                localStorage.getItem(
+                    "actividadAdmin"
+                )
+            ) || [];
+
+    } catch (error) {
+
+        actividades = [];
+
+    }
+
+
+    actividades.unshift({
+
+        texto: texto,
+
+        fecha:
+            new Date()
+            .toLocaleString("es-CO")
+
+    });
+
+
+    localStorage.setItem(
+
+        "actividadAdmin",
+
+        JSON.stringify(
+            actividades
+        )
+
+    );
+
+}
+
+
+/* ========================================
+   MOSTRAR ACTIVIDAD
+======================================== */
+
+function mostrarActividad() {
+
+    const lista =
+        document
+        .getElementById("actividad");
+
+
+    let actividades = [];
+
+
+    try {
+
+        actividades =
+            JSON.parse(
+                localStorage.getItem(
+                    "actividadAdmin"
+                )
+            ) || [];
+
+    } catch (error) {
+
+        actividades = [];
+
+    }
+
+
+    lista.innerHTML = "";
+
+
+    if (actividades.length === 0) {
+
+        lista.innerHTML =
+            "<div class='elemento'>" +
+            "No hay actividad registrada todavía." +
+            "</div>";
+
+        return;
+
+    }
+
+
+    actividades
+    .slice(0, 10)
+    .forEach(function(item) {
+
+
+        const elemento =
+            document.createElement("div");
+
+
+        elemento.className =
+            "elemento";
+
+
+        const titulo =
+            document.createElement("strong");
+
+
+        titulo.innerText =
+            item.texto;
+
+
+        const salto =
+            document.createElement("br");
+
+
+        const fecha =
+            document.createTextNode(
+                "📅 " + item.fecha
+            );
+
+
+        elemento.appendChild(titulo);
+
+        elemento.appendChild(salto);
+
+        elemento.appendChild(fecha);
+
+
+        lista.appendChild(elemento);
+
+    });
+
+}
+
+
+/* ========================================
+   DETECTAR DISPOSITIVO
+======================================== */
+
+function detectarDispositivo() {
+
+    const agente =
+        navigator.userAgent;
+
+
+    let dispositivo =
+        "Computador";
+
+
+    if (/Android/i.test(agente)) {
+
+        dispositivo =
+            "Android";
+
+    }
+
+    else if (/iPhone|iPad|iPod/i.test(agente)) {
+
+        dispositivo =
+            "Apple";
+
+    }
+
+    else if (/Windows/i.test(agente)) {
+
+        dispositivo =
+            "Windows";
+
+    }
+
+    else if (/Macintosh/i.test(agente)) {
+
+        dispositivo =
+            "Mac";
+
+    }
+
+    else if (/Linux/i.test(agente)) {
+
+        dispositivo =
+            "Linux";
+
+    }
+
+
+    document
+    .getElementById("dispositivo")
+    .innerText =
+        dispositivo;
+
+}
+
+
+/* ========================================
+   ACTUALIZAR DATOS
+======================================== */
+
+function actualizarDatos() {
+
+
+    const visitas =
+        localStorage.getItem(
+            "contadorVisitasDemo"
+        ) || "0";
+
+
+    const interacciones =
+        localStorage.getItem(
+            "contadorInteraccionesDemo"
+        ) || "0";
+
+
+    document
+    .getElementById("visitas")
+    .innerText =
+        visitas;
+
+
+    document
+    .getElementById("interacciones")
+    .innerText =
+        interacciones;
+
+
+    document
+    .getElementById("fecha")
+    .innerText =
+        new Date()
+        .toLocaleDateString("es-CO");
+
+
+    detectarDispositivo();
+
+
+    mostrarActividad();
+
+}
+
+
+/* ========================================
+   ENTER PARA INGRESAR
+======================================== */
+
+document
+.getElementById("password")
+.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            entrar();
+
+        }
+
+    }
+);
+
+
+/* ========================================
+   COMPROBAR SESIÓN
+======================================== */
+
+if (
+    sessionStorage.getItem(
+        "adminActivo"
+    ) === "si"
+) {
+
+
+    document
+    .getElementById("acceso")
+    .style.display = "none";
+
+
+    document
+    .getElementById("panel")
+    .style.display = "block";
+
+
+    actualizarDatos();
+
+}
+
+</script>
+
+
+</body>
+
+</html>
