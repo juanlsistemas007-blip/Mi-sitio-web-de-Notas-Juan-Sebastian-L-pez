@@ -10,43 +10,32 @@ html {
 
 body {
     min-height: 100vh;
-
     font-family: "Times New Roman", serif;
-
     color: #f5e6b6;
+    background-color: #080006;
 
-    background:
+    background-image:
         radial-gradient(
             circle,
-            rgba(212,175,55,0.15) 1px,
+            rgba(212, 175, 55, 0.18) 1px,
             transparent 2px
         );
 
     background-size: 35px 35px;
-
-    background-color: #080006;
 }
 
-
-/* =================================
-   DECORACIÓN
-================================= */
+/* ================================
+   DECORACION
+================================ */
 
 .decor {
     position: fixed;
-
     width: 8px;
     height: 8px;
-
     border-radius: 50%;
-
     background: #d4af37;
-
-    opacity: .35;
-
-    box-shadow:
-        0 0 10px #d4af37;
-
+    opacity: 0.35;
+    box-shadow: 0 0 10px #d4af37;
     pointer-events: none;
 }
 
@@ -65,22 +54,18 @@ body {
     right: 5%;
 }
 
-
-/* =================================
+/* ================================
    CABECERA
-================================= */
+================================ */
 
 .top {
-    width: min(94%, 900px);
-
+    width: 94%;
+    max-width: 900px;
     margin: 25px auto;
-
     padding: 30px 20px;
-
     text-align: center;
 
     border: 2px solid #d4af37;
-
     border-radius: 22px;
 
     background:
@@ -92,23 +77,19 @@ body {
         );
 
     box-shadow:
-        0 0 25px
-        rgba(212,175,55,.18);
+        0 0 25px rgba(212, 175, 55, 0.18);
 }
 
-
-/* =================================
-   FOTO
-================================= */
+/* ================================
+   FOTO DE PERFIL
+================================ */
 
 .profile {
     width: 170px;
     height: 170px;
-
-    margin: auto;
+    margin: 0 auto;
 
     border-radius: 50%;
-
     overflow: hidden;
 
     border: 5px solid #d4af37;
@@ -116,29 +97,25 @@ body {
     background: #100006;
 
     box-shadow:
-        0 0 25px
-        rgba(212,175,55,.30);
+        0 0 25px rgba(212, 175, 55, 0.30);
 }
 
 .profile img {
     width: 100%;
     height: 100%;
+    display: block;
 
     object-fit: cover;
-
-    display: block;
 }
 
-
-/* =================================
+/* ================================
    LOGO
-================================= */
+================================ */
 
 .initials {
     margin: 15px auto 5px;
 
     font-family: cursive;
-
     font-size: 30px;
 
     color: #d4af37;
@@ -174,21 +151,20 @@ body {
     font-size: 18px;
 }
 
-
-/* =================================
-   CONTENEDOR
-================================= */
+/* ================================
+   CONTENEDOR PRINCIPAL
+================================ */
 
 .main-container {
-    width: min(94%, 900px);
+    width: 94%;
+    max-width: 900px;
 
     margin: auto;
 }
 
-
-/* =================================
+/* ================================
    PANELES
-================================= */
+================================ */
 
 .note-panel,
 .search-panel,
@@ -205,13 +181,12 @@ body {
     background:
         linear-gradient(
             145deg,
-            rgba(72,0,34,.96),
-            rgba(25,0,13,.98)
+            rgba(72, 0, 34, 0.96),
+            rgba(25, 0, 13, 0.98)
         );
 
     box-shadow:
-        0 0 18px
-        rgba(212,175,55,.12);
+        0 0 18px rgba(212, 175, 55, 0.12);
 }
 
 .note-panel h2,
@@ -226,10 +201,9 @@ body {
     font-size: 27px;
 }
 
-
-/* =================================
+/* ================================
    INPUTS
-================================= */
+================================ */
 
 input,
 textarea {
@@ -245,9 +219,7 @@ textarea {
 
     padding: 14px;
 
-    font-family:
-        "Times New Roman",
-        serif;
+    font-family: "Times New Roman", serif;
 
     font-size: 18px;
 
@@ -256,13 +228,17 @@ textarea {
     margin-bottom: 14px;
 }
 
+input::placeholder,
+textarea::placeholder {
+    color: #a99670;
+}
+
 input:focus,
 textarea:focus {
     border-color: #d4af37;
 
     box-shadow:
-        0 0 10px
-        rgba(212,175,55,.15);
+        0 0 10px rgba(212, 175, 55, 0.15);
 }
 
 textarea {
@@ -271,10 +247,9 @@ textarea {
     resize: vertical;
 }
 
-
-/* =================================
+/* ================================
    BOTONES
-================================= */
+================================ */
 
 .note-buttons {
     display: flex;
@@ -285,9 +260,7 @@ textarea {
 }
 
 button {
-    font-family:
-        "Times New Roman",
-        serif;
+    font-family: "Times New Roman", serif;
 
     font-size: 17px;
 
@@ -299,12 +272,11 @@ button {
 
     padding: 12px 20px;
 
-    transition: .2s;
+    transition: 0.2s;
 }
 
 button:hover {
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 }
 
 .gold-btn {
@@ -345,10 +317,9 @@ button:hover {
     margin-top: 20px;
 }
 
-
-/* =================================
+/* ================================
    BUSCADOR
-================================= */
+================================ */
 
 .search-panel {
     padding: 15px;
@@ -358,10 +329,9 @@ button:hover {
     margin: 0;
 }
 
-
-/* =================================
-   TITULO SECCIÓN
-================================= */
+/* ================================
+   TITULO DE SECCION
+================================ */
 
 .section-title {
     text-align: center;
@@ -373,16 +343,19 @@ button:hover {
     margin-bottom: 18px;
 }
 
-
-/* =================================
-   NOTAS
-================================= */
+/* ================================
+   CONTENEDOR DE NOTAS
+================================ */
 
 #notesContainer {
     display: grid;
 
     gap: 18px;
 }
+
+/* ================================
+   TARJETA DE NOTA
+================================ */
 
 .note-card {
     padding: 22px;
@@ -399,8 +372,7 @@ button:hover {
         );
 
     box-shadow:
-        0 0 15px
-        rgba(212,175,55,.10);
+        0 0 15px rgba(212, 175, 55, 0.10);
 }
 
 .note-card h3 {
@@ -426,4 +398,197 @@ button:hover {
 
     font-size: 18px;
 
-    color: #f7
+    color: #f7e8ba;
+
+    margin-bottom: 18px;
+}
+
+/* ================================
+   BOTONES DE NOTA
+================================ */
+
+.card-buttons {
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+.edit-btn {
+    background: #5b092f;
+
+    color: #f2d77c;
+
+    border: 1px solid #d4af37;
+}
+
+.delete-btn {
+    background: #22000d;
+
+    color: #ffb5b5;
+
+    border: 1px solid #a93636;
+}
+
+/* ================================
+   SIN NOTAS
+================================ */
+
+.empty {
+    text-align: center;
+
+    padding: 40px 20px;
+
+    border: 1px dashed #d4af37;
+
+    border-radius: 15px;
+
+    color: #d4af37;
+
+    font-size: 20px;
+}
+
+/* ================================
+   ASISTENTE IA
+================================ */
+
+.ai-panel {
+    margin-top: 35px;
+}
+
+.ai-icon {
+    text-align: center;
+
+    font-size: 50px;
+
+    margin-bottom: 5px;
+}
+
+.ai-panel p {
+    text-align: center;
+
+    margin-bottom: 18px;
+
+    font-size: 17px;
+}
+
+.ai-response {
+    margin-top: 20px;
+
+    padding: 18px;
+
+    min-height: 50px;
+
+    border-radius: 12px;
+
+    border: 1px solid #d4af37;
+
+    background: #100006;
+
+    color: #f5e5b3;
+
+    line-height: 1.6;
+}
+
+/* ================================
+   INFORMACION
+================================ */
+
+.info-panel {
+    text-align: center;
+}
+
+.info-panel p {
+    font-size: 17px;
+
+    line-height: 1.6;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+footer {
+    width: 94%;
+
+    max-width: 900px;
+
+    margin: 30px auto;
+
+    padding: 20px;
+
+    text-align: center;
+
+    color: #d4af37;
+
+    border-top:
+        1px solid rgba(212, 175, 55, 0.4);
+}
+
+/* ================================
+   ADMINISTRADOR
+================================ */
+
+.admin-photo {
+    width: 100%;
+
+    max-width: 500px;
+
+    display: block;
+
+    margin: 20px auto;
+}
+
+/* ================================
+   CELULAR
+================================ */
+
+@media (max-width: 600px) {
+
+    .top {
+        margin-top: 12px;
+
+        padding: 22px 14px;
+    }
+
+    .profile {
+        width: 140px;
+
+        height: 140px;
+    }
+
+    .welcome {
+        font-size: 16px;
+    }
+
+    .note-panel,
+    .ai-panel,
+    .info-panel {
+        padding: 18px 13px;
+    }
+
+    input,
+    textarea {
+        font-size: 17px;
+    }
+
+    .note-buttons,
+    .card-buttons {
+        flex-direction: column;
+    }
+
+    .note-buttons button,
+    .card-buttons button {
+        width: 100%;
+    }
+
+    .note-card h3 {
+        font-size: 22px;
+    }
+
+    .note-card p {
+        font-size: 17px;
+    }
+
+}
