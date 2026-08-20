@@ -10,7 +10,7 @@
 <meta name="theme-color" content="#7b102c">
 
 <meta name="description"
-content="Mi Bloc de Notas personal">
+content="Mi Bloc de Notas personal de Juan Sebastian López">
 
 <link rel="stylesheet" href="estilo.css">
 
@@ -26,15 +26,12 @@ content="Mi Bloc de Notas personal">
 
 <header>
 
-    <!-- =========================
-         FOTO DE PERFIL
-    ========================== -->
-
     <div class="foto-perfil">
 
         <img
-            src="logotipe.jpg"
+            src="./logotipe.jpg"
             alt="Foto de perfil de Juan Sebastian López"
+            onerror="this.style.display='none'; this.parentElement.classList.add('foto-error');"
         >
 
     </div>
@@ -61,10 +58,6 @@ content="Mi Bloc de Notas personal">
 <main class="contenedor">
 
 
-    <!-- =========================
-         NUEVA NOTA
-    ========================== -->
-
     <section class="caja">
 
         <h2>
@@ -86,18 +79,12 @@ content="Mi Bloc de Notas personal">
 
 
         <button onclick="guardarNota()">
-
             💾 Guardar nota
-
         </button>
 
     </section>
 
 
-
-    <!-- =========================
-         ASISTENTE
-    ========================== -->
 
     <section class="caja asistente">
 
@@ -122,9 +109,7 @@ content="Mi Bloc de Notas personal">
             class="boton-verde"
             onclick="preguntarAsistente()"
         >
-
             🤖 Preguntar
-
         </button>
 
 
@@ -139,10 +124,6 @@ content="Mi Bloc de Notas personal">
 
 
 
-    <!-- =========================
-         MIS NOTAS
-    ========================== -->
-
     <section class="caja">
 
         <h2>
@@ -154,9 +135,7 @@ content="Mi Bloc de Notas personal">
             class="contador"
             id="contador"
         >
-
             Aún no tienes notas guardadas.
-
         </div>
 
 
@@ -165,10 +144,6 @@ content="Mi Bloc de Notas personal">
     </section>
 
 
-
-    <!-- =========================
-         INSTALAR
-    ========================== -->
 
     <section class="caja">
 
@@ -199,10 +174,6 @@ content="Mi Bloc de Notas personal">
 
 
 
-<!-- =========================
-     PIE DE PÁGINA
-========================== -->
-
 <footer>
 
     © 2026 Juan Sebastian López
@@ -217,9 +188,6 @@ content="Mi Bloc de Notas personal">
 
 <script>
 
-/* =========================
-   CARGAR NOTAS
-========================= */
 
 let notas = [];
 
@@ -237,10 +205,6 @@ try {
 }
 
 
-
-/* =========================
-   MOSTRAR NOTAS
-========================= */
 
 function mostrarNotas() {
 
@@ -273,7 +237,6 @@ function mostrarNotas() {
 
 
     notas.forEach(function(nota, indice) {
-
 
         const tarjeta =
             document.createElement("div");
@@ -317,12 +280,11 @@ function mostrarNotas() {
             "🗑 Eliminar";
 
 
-        eliminar.onclick =
-            function() {
+        eliminar.onclick = function() {
 
-                eliminarNota(indice);
+            eliminarNota(indice);
 
-            };
+        };
 
 
         tarjeta.appendChild(titulo);
@@ -333,7 +295,6 @@ function mostrarNotas() {
 
         tarjeta.appendChild(eliminar);
 
-
         lista.appendChild(tarjeta);
 
     });
@@ -341,10 +302,6 @@ function mostrarNotas() {
 }
 
 
-
-/* =========================
-   GUARDAR NOTA
-========================= */
 
 function guardarNota() {
 
@@ -377,8 +334,7 @@ function guardarNota() {
             contenido.value.trim(),
 
         fecha:
-            new Date()
-            .toLocaleString("es-CO")
+            new Date().toLocaleString("es-CO")
 
     };
 
@@ -387,11 +343,8 @@ function guardarNota() {
 
 
     localStorage.setItem(
-
         "misNotas",
-
         JSON.stringify(notas)
-
     );
 
 
@@ -401,7 +354,6 @@ function guardarNota() {
 
 
     aumentarInteracciones();
-
 
     mostrarNotas();
 
@@ -414,10 +366,6 @@ function guardarNota() {
 
 
 
-/* =========================
-   ELIMINAR NOTA
-========================= */
-
 function eliminarNota(indice) {
 
     const confirmar =
@@ -427,9 +375,7 @@ function eliminarNota(indice) {
 
 
     if (!confirmar) {
-
         return;
-
     }
 
 
@@ -437,11 +383,8 @@ function eliminarNota(indice) {
 
 
     localStorage.setItem(
-
         "misNotas",
-
         JSON.stringify(notas)
-
     );
 
 
@@ -450,10 +393,6 @@ function eliminarNota(indice) {
 }
 
 
-
-/* =========================
-   ASISTENTE
-========================= */
 
 function preguntarAsistente() {
 
@@ -466,8 +405,7 @@ function preguntarAsistente() {
 
 
     const respuesta =
-        document
-        .getElementById("respuesta");
+        document.getElementById("respuesta");
 
 
     if (pregunta === "") {
@@ -508,8 +446,7 @@ function preguntarAsistente() {
                 nota.titulo +
                 " " +
                 nota.contenido
-            )
-            .toLowerCase();
+            ).toLowerCase();
 
 
         let puntos = 0;
@@ -517,9 +454,7 @@ function preguntarAsistente() {
 
         palabras.forEach(function(palabra) {
 
-            if (
-                texto.includes(palabra)
-            ) {
+            if (texto.includes(palabra)) {
 
                 puntos++;
 
@@ -543,13 +478,11 @@ function preguntarAsistente() {
     });
 
 
-    resultados.sort(
-        function(a, b) {
+    resultados.sort(function(a, b) {
 
-            return b.puntos - a.puntos;
+        return b.puntos - a.puntos;
 
-        }
-    );
+    });
 
 
     if (resultados.length === 0) {
@@ -571,16 +504,10 @@ function preguntarAsistente() {
         "en la nota:<br><br>" +
 
         "<strong>" +
-
-        escaparHTML(
-            mejor.titulo
-        ) +
-
+        escaparHTML(mejor.titulo) +
         "</strong><br><br>" +
 
-        escaparHTML(
-            mejor.contenido
-        );
+        escaparHTML(mejor.contenido);
 
 
     aumentarInteracciones();
@@ -589,29 +516,19 @@ function preguntarAsistente() {
 
 
 
-/* =========================
-   PROTEGER TEXTO
-========================= */
-
 function escaparHTML(texto) {
 
     const div =
         document.createElement("div");
 
-
     div.textContent =
         texto;
-
 
     return div.innerHTML;
 
 }
 
 
-
-/* =========================
-   CONTADOR DE INTERACCIONES
-========================= */
 
 function aumentarInteracciones() {
 
@@ -627,20 +544,13 @@ function aumentarInteracciones() {
 
 
     localStorage.setItem(
-
         "contadorInteraccionesDemo",
-
         cantidad
-
     );
 
 }
 
 
-
-/* =========================
-   CONTADOR DE VISITAS
-========================= */
 
 function registrarVisita() {
 
@@ -664,20 +574,14 @@ function registrarVisita() {
 
 
         localStorage.setItem(
-
             "contadorVisitasDemo",
-
             visitas
-
         );
 
 
         sessionStorage.setItem(
-
             "visitaRegistrada",
-
             "si"
-
         );
 
     }
@@ -685,10 +589,6 @@ function registrarVisita() {
 }
 
 
-
-/* =========================
-   INSTALACIÓN
-========================= */
 
 function mostrarInstalacion() {
 
@@ -716,13 +616,10 @@ function mostrarInstalacion() {
 
 
 
-/* =========================
-   INICIAR
-========================= */
-
 registrarVisita();
 
 mostrarNotas();
+
 
 </script>
 
