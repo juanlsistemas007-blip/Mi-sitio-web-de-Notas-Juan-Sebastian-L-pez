@@ -1,1328 +1,702 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
+    <meta charset="UTF-8">
 
-<meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#16000b">
 
-<meta name="theme-color" content="#5b061c">
+    <title>Panel Administrador | Juan Sebastian López</title>
 
-<meta name="description"
-content="Panel administrador de Juan Sebastian López">
-
-<title>Panel Administrador | Juan Sebastian López</title>
-
-<style>
-
-/* ========================================
-   GENERAL
-======================================== */
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    color: white;
-
-    background-color: #21000b;
-
-    background-image:
-        radial-gradient(
-            circle,
-            rgba(255, 190, 60, 0.35) 1px,
-            transparent 1.5px
-        );
-
-    background-size: 30px 30px;
-}
-
-
-/* ========================================
-   ACCESO
-======================================== */
-
-#acceso {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9999;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 20px;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #7d1234,
-            #26000d 70%
-        );
-
-    overflow-y: auto;
-}
-
-
-.caja-login {
-
-    width: 100%;
-
-    max-width: 420px;
-
-    text-align: center;
-
-    padding: 35px 25px;
-
-    border-radius: 25px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #650c27,
-            #230008
-        );
-
-    border: 2px solid #e8b84f;
-
-    box-shadow:
-        0 0 30px rgba(255, 190, 60, 0.35),
-        0 20px 60px rgba(0,0,0,0.7);
-}
-
-
-.logo-login {
-
-    width: 150px;
-
-    height: 150px;
-
-    object-fit: cover;
-
-    object-position: center;
-
-    border-radius: 25px;
-
-    border: 3px solid #ffd978;
-
-    box-shadow:
-        0 0 25px rgba(255, 0, 70, 0.5);
-
-    margin-bottom: 15px;
-}
-
-
-.caja-login h1 {
-
-    color: #ffd978;
-
-    font-size: 26px;
-
-    margin: 10px 0;
-}
-
-
-.caja-login p {
-
-    color: #ffe8a8;
-
-    line-height: 1.5;
-}
-
-
-#error {
-
-    color: #ff8fa8;
-
-    min-height: 24px;
-
-    font-weight: bold;
-}
-
-
-/* ========================================
-   CAMPOS
-======================================== */
-
-input {
-
-    width: 100%;
-
-    padding: 15px;
-
-    margin: 12px 0;
-
-    border-radius: 12px;
-
-    border: 1px solid #e8b84f;
-
-    background: #160005;
-
-    color: white;
-
-    font-size: 16px;
-
-    outline: none;
-}
-
-
-input::placeholder {
-
-    color: rgba(255,255,255,0.65);
-}
-
-
-input:focus {
-
-    border-color: #fff3bb;
-
-    box-shadow:
-        0 0 15px rgba(255,217,120,0.4);
-}
-
-
-/* ========================================
-   BOTONES
-======================================== */
-
-button {
-
-    border: none;
-
-    border-radius: 12px;
-
-    padding: 14px 20px;
-
-    cursor: pointer;
-
-    font-weight: bold;
-
-    font-size: 15px;
-
-    margin: 4px;
-
-    transition: 0.2s;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffe294,
-            #bb791d
-        );
-
-    color: #37000f;
-}
-
-
-button:hover {
-
-    transform: scale(1.03);
-}
-
-
-button:active {
-
-    transform: scale(0.98);
-}
-
-
-.rojo {
-
-    background:
-        linear-gradient(
-            135deg,
-            #e1395d,
-            #7d0827
-        );
-
-    color: white;
-}
-
-
-.verde {
-
-    background:
-        linear-gradient(
-            135deg,
-            #6de09a,
-            #197342
-        );
-
-    color: white;
-}
-
-
-/* ========================================
-   PANEL
-======================================== */
-
-#panel {
-
-    display: none;
-
-    min-height: 100vh;
-}
-
-
-/* ========================================
-   HEADER
-======================================== */
-
-header {
-
-    text-align: center;
-
-    padding: 25px 15px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7b0d2d,
-            #230008,
-            #8d1235
-        );
-
-    border-bottom: 2px solid #e8b84f;
-
-    box-shadow:
-        0 5px 25px rgba(0,0,0,0.6);
-}
-
-
-.logo {
-
-    width: 100px;
-
-    height: 100px;
-
-    object-fit: cover;
-
-    object-position: center;
-
-    border-radius: 20px;
-
-    border: 2px solid #ffd978;
-}
-
-
-header h1 {
-
-    color: #ffd978;
-
-    margin: 10px 0 5px;
-
-    font-size: clamp(24px, 5vw, 38px);
-}
-
-
-header p {
-
-    color: #ffe8a8;
-
-    margin: 8px 0;
-}
-
-
-/* ========================================
-   CONTENEDOR
-======================================== */
-
-.contenedor {
-
-    width: 92%;
-
-    max-width: 1200px;
-
-    margin: 30px auto;
-}
-
-
-/* ========================================
-   ESTADÍSTICAS
-======================================== */
-
-.estadisticas {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(200px, 1fr));
-
-    gap: 20px;
-
-    margin-bottom: 25px;
-}
-
-
-.tarjeta {
-
-    padding: 25px;
-
-    text-align: center;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #7b1031,
-            #31000f
-        );
-
-    border: 1px solid #e8b84f;
-
-    box-shadow:
-        0 10px 25px rgba(0,0,0,0.4);
-}
-
-
-.tarjeta .icono {
-
-    font-size: 45px;
-}
-
-
-.numero {
-
-    display: block;
-
-    margin: 12px 0;
-
-    font-size: 38px;
-
-    font-weight: bold;
-
-    color: #ffe082;
-}
-
-
-.descripcion {
-
-    color: #ffffff;
-}
-
-
-/* ========================================
-   CAJAS
-======================================== */
-
-.caja {
-
-    padding: 25px;
-
-    margin-bottom: 25px;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #690d29,
-            #29000d
-        );
-
-    border: 1px solid #e8b84f;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,0.4);
-}
-
-
-.caja h2 {
-
-    color: #ffd978;
-
-    margin-top: 0;
-}
-
-
-.caja p {
-
-    line-height: 1.6;
-}
-
-
-/* ========================================
-   LISTA
-======================================== */
-
-.lista {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 12px;
-}
-
-
-.elemento {
-
-    padding: 15px;
-
-    border-radius: 12px;
-
-    background: rgba(0,0,0,0.3);
-
-    border-left: 4px solid #e8b84f;
-
-    line-height: 1.6;
-}
-
-
-.elemento strong {
-
-    color: #ffd978;
-}
-
-
-/* ========================================
-   AVISO
-======================================== */
-
-.aviso {
-
-    padding: 18px;
-
-    border-radius: 14px;
-
-    background: rgba(255, 210, 100, 0.12);
-
-    border: 1px solid #d9a83c;
-
-    color: #fff0bb;
-
-    line-height: 1.6;
-}
-
-
-/* ========================================
-   FOOTER
-======================================== */
-
-footer {
-
-    text-align: center;
-
-    padding: 30px;
-
-    color: #ffd978;
-}
-
-
-/* ========================================
-   CELULAR
-======================================== */
-
-@media (max-width: 600px) {
-
-    .contenedor {
-
-        width: 94%;
-
-        margin: 20px auto;
-    }
-
-
-    .caja {
-
-        padding: 18px;
-    }
-
-
-    .estadisticas {
-
-        grid-template-columns: 1fr;
-    }
-
-
-    .tarjeta {
-
-        padding: 20px;
-    }
-
-
-    button {
-
-        width: 100%;
-
-        margin: 5px 0;
-    }
-
-
-    .caja-login {
-
-        padding: 28px 18px;
-    }
-
-
-    .logo-login {
-
-        width: 125px;
-
-        height: 125px;
-    }
-
-}
-
-
-/* ========================================
-   CELULAR PEQUEÑO
-======================================== */
-
-@media (max-width: 380px) {
-
-    .caja-login h1 {
-
-        font-size: 22px;
-    }
-
-
-    .logo-login {
-
-        width: 110px;
-
-        height: 110px;
-    }
-
-}
-
-</style>
-
+    <link rel="stylesheet" href="estilo.css">
 </head>
 
+<body class="admin-body">
 
-<body>
+    <div class="admin-container">
 
+        <header class="admin-header">
 
-<!-- ========================================
-     ACCESO ADMINISTRADOR
-======================================== -->
+            <div class="js-logo">
+                JS
+            </div>
 
-<div id="acceso">
+            <div>
+                <h1>Panel de Administrador</h1>
 
-    <div class="caja-login">
+                <p>
+                    Juan Sebastian López
+                    <br>
+                    Sistemas y Tecnología
+                </p>
+            </div>
 
-
-        <img
-            src="icono.jpg"
-            class="logo-login"
-            alt="Juan Sebastian López"
-        >
-
-
-        <h1>
-            👑 Panel Administrador
-        </h1>
+        </header>
 
 
-        <p>
+        <!-- PERFIL -->
 
-            Acceso privado de
+        <section class="admin-card">
 
-            <br>
+            <h2>📷 Foto de perfil</h2>
 
-            <strong>
-                Juan Sebastian López
-            </strong>
-
-        </p>
-
-
-        <input
-            type="password"
-            id="password"
-            placeholder="Introduce tu contraseña"
-            autocomplete="current-password"
-        >
+            <p class="admin-description">
+                Selecciona una foto desde tu celular o computador.
+                Después podrás moverla y cambiar el zoom para que
+                la cara quede exactamente donde quieres.
+            </p>
 
 
-        <button onclick="entrar()">
+            <!-- BOTON SELECCIONAR -->
 
-            🔐 Entrar al panel
+            <label for="photoInput" class="gold-button">
+                📁 Seleccionar foto
+            </label>
 
-        </button>
+            <input
+                type="file"
+                id="photoInput"
+                accept="image/jpeg,image/jpg,image/png"
+                hidden
+            >
 
 
-        <p id="error"></p>
+            <!-- EDITOR -->
 
+            <div id="editorArea" class="editor-area">
+
+                <div class="crop-container">
+
+                    <canvas
+                        id="cropCanvas"
+                        width="400"
+                        height="400">
+                    </canvas>
+
+                    <div class="crop-circle"></div>
+
+                </div>
+
+
+                <div class="controls">
+
+                    <div class="control-group">
+
+                        <label for="zoom">
+                            🔍 Zoom
+                        </label>
+
+                        <input
+                            type="range"
+                            id="zoom"
+                            min="0.5"
+                            max="3"
+                            step="0.01"
+                            value="1"
+                        >
+
+                    </div>
+
+
+                    <div class="control-group">
+
+                        <label for="positionX">
+                            ↔️ Mover horizontalmente
+                        </label>
+
+                        <input
+                            type="range"
+                            id="positionX"
+                            min="-200"
+                            max="200"
+                            value="0"
+                        >
+
+                    </div>
+
+
+                    <div class="control-group">
+
+                        <label for="positionY">
+                            ↕️ Mover verticalmente
+                        </label>
+
+                        <input
+                            type="range"
+                            id="positionY"
+                            min="-200"
+                            max="200"
+                            value="0"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="button-area">
+
+                    <button
+                        type="button"
+                        id="resetButton"
+                        class="secondary-button">
+
+                        ↺ Restablecer
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="downloadButton"
+                        class="gold-button">
+
+                        💾 Descargar logotipe.jpg
+
+                    </button>
+
+                </div>
+
+
+                <p class="save-info">
+
+                    Después de descargar la imagen,
+                    súbela a tu repositorio de GitHub y
+                    reemplaza la imagen anterior llamada
+                    <strong>logotipe.jpg</strong>.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- VISTA PREVIA -->
+
+        <section class="admin-card">
+
+            <h2>👤 Vista previa</h2>
+
+            <div class="profile-preview">
+
+                <img
+                    id="previewImage"
+                    src="logotipe.jpg"
+                    alt="Foto de perfil"
+                    onerror="this.style.display='none'; document.getElementById('noPhoto').style.display='flex';"
+                >
+
+                <div
+                    id="noPhoto"
+                    class="no-photo"
+                    style="display:none;">
+
+                    📷
+
+                </div>
+
+            </div>
+
+            <p class="preview-text">
+                Así aparecerá tu foto en la página principal.
+            </p>
+
+        </section>
+
+
+        <!-- INFORMACION -->
+
+        <section class="admin-card">
+
+            <h2>⚠️ Cómo guardar la foto definitivamente</h2>
+
+            <div class="instructions">
+
+                <p>
+                    <strong>1.</strong>
+                    Selecciona tu foto.
+                </p>
+
+                <p>
+                    <strong>2.</strong>
+                    Ajusta el zoom.
+                </p>
+
+                <p>
+                    <strong>3.</strong>
+                    Mueve la foto hasta que la cara quede bien.
+                </p>
+
+                <p>
+                    <strong>4.</strong>
+                    Pulsa
+                    <strong>“Descargar logotipe.jpg”</strong>.
+                </p>
+
+                <p>
+                    <strong>5.</strong>
+                    Ve a tu repositorio de GitHub.
+                </p>
+
+                <p>
+                    <strong>6.</strong>
+                    Elimina o reemplaza el archivo
+                    <strong>logotipe.jpg</strong>.
+                </p>
+
+                <p>
+                    <strong>7.</strong>
+                    Sube la nueva imagen descargada.
+                </p>
+
+                <p>
+                    <strong>8.</strong>
+                    Espera unos minutos y actualiza tu página.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <footer class="admin-footer">
+
+            © 2026 Juan Sebastian López |
+            Técnico en Sistemas
+
+        </footer>
 
     </div>
-
-</div>
-
-
-
-<!-- ========================================
-     PANEL PRINCIPAL
-======================================== -->
-
-<div id="panel">
-
-
-<header>
-
-
-    <img
-        src="icono.jpg"
-        class="logo"
-        alt="Logo Juan Sebastian López"
-    >
-
-
-    <h1>
-        👑 Panel de Administración
-    </h1>
-
-
-    <p>
-        Juan Sebastian López
-    </p>
-
-
-    <p>
-        Bloc de Notas Rubí
-    </p>
-
-
-</header>
-
-
-
-<main class="contenedor">
-
-
-<!-- ========================================
-     ESTADÍSTICAS
-======================================== -->
-
-<section class="estadisticas">
-
-
-    <div class="tarjeta">
-
-        <div class="icono">
-            👥
-        </div>
-
-        <span
-            class="numero"
-            id="visitas"
-        >
-            0
-        </span>
-
-        <span class="descripcion">
-            Visitas registradas
-        </span>
-
-    </div>
-
-
-
-    <div class="tarjeta">
-
-        <div class="icono">
-            📝
-        </div>
-
-        <span
-            class="numero"
-            id="interacciones"
-        >
-            0
-        </span>
-
-        <span class="descripcion">
-            Interacciones
-        </span>
-
-    </div>
-
-
-
-    <div class="tarjeta">
-
-        <div class="icono">
-            📱
-        </div>
-
-        <span
-            class="numero"
-            id="dispositivo"
-        >
-            --
-        </span>
-
-        <span class="descripcion">
-            Tu dispositivo
-        </span>
-
-    </div>
-
-
-
-    <div class="tarjeta">
-
-        <div class="icono">
-            📅
-        </div>
-
-        <span
-            class="numero"
-            id="fecha"
-        >
-            --
-        </span>
-
-        <span class="descripcion">
-            Fecha actual
-        </span>
-
-    </div>
-
-
-</section>
-
-
-
-<!-- ========================================
-     ACTIVIDAD
-======================================== -->
-
-<section class="caja">
-
-    <h2>
-        📊 Actividad del panel
-    </h2>
-
-
-    <div
-        class="lista"
-        id="actividad"
-    >
-
-        <div class="elemento">
-
-            <strong>
-                👑 Administrador:
-            </strong>
-
-            Panel iniciado correctamente.
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ========================================
-     CONTROL
-======================================== -->
-
-<section class="caja">
-
-    <h2>
-        ⚙️ Control del administrador
-    </h2>
-
-
-    <p>
-
-        Desde aquí podrás controlar y consultar
-        la información de tu sitio.
-
-    </p>
-
-
-    <button
-        class="verde"
-        onclick="actualizarDatos()"
-    >
-
-        🔄 Actualizar panel
-
-    </button>
-
-
-    <button
-        class="rojo"
-        onclick="cerrarSesion()"
-    >
-
-        🔒 Cerrar sesión
-
-    </button>
-
-</section>
-
-
-
-<!-- ========================================
-     INFORMACIÓN
-======================================== -->
-
-<section class="caja">
-
-    <h2>
-        📈 Estadísticas
-    </h2>
-
-
-    <div class="aviso">
-
-        Este panel funciona sin Firebase.
-
-        <br><br>
-
-        Los datos guardados con localStorage
-        pertenecen al navegador donde fueron
-        registrados.
-
-        <br><br>
-
-        Para obtener estadísticas globales de
-        todos los visitantes se necesitaría
-        un sistema externo de estadísticas
-        o un servidor.
-
-    </div>
-
-</section>
-
-
-</main>
-
-
-
-<footer>
-
-    👑 © 2026 Juan Sebastian López
-
-    <br><br>
-
-    Panel privado · Diseño Rubí y Oro ❤️✨
-
-</footer>
-
-
-</div>
-
 
 
 <script>
 
-/* ========================================
-   CONTRASEÑA
-======================================== */
+const photoInput =
+    document.getElementById("photoInput");
 
-const CONTRASENA = "JuanRubi2026";
+const canvas =
+    document.getElementById("cropCanvas");
 
+const ctx =
+    canvas.getContext("2d");
 
-/* ========================================
-   ENTRAR
-======================================== */
+const zoomInput =
+    document.getElementById("zoom");
 
-function entrar() {
+const positionXInput =
+    document.getElementById("positionX");
 
-    const campoPassword =
-        document.getElementById("password");
+const positionYInput =
+    document.getElementById("positionY");
 
+const resetButton =
+    document.getElementById("resetButton");
 
-    const error =
-        document.getElementById("error");
+const downloadButton =
+    document.getElementById("downloadButton");
 
+const previewImage =
+    document.getElementById("previewImage");
 
-    const password =
-        campoPassword.value;
-
-
-    if (password === CONTRASENA) {
-
-
-        document
-        .getElementById("acceso")
-        .style.display = "none";
+const editorArea =
+    document.getElementById("editorArea");
 
 
-        document
-        .getElementById("panel")
-        .style.display = "block";
+let image = new Image();
+
+let imageLoaded = false;
 
 
-        sessionStorage.setItem(
-            "adminActivo",
-            "si"
-        );
+/* =========================
+   SELECCIONAR FOTO
+========================= */
 
+photoInput.addEventListener("change", function(event) {
 
-        registrarActividad(
-            "👑 Administrador ingresó al panel."
-        );
+    const file = event.target.files[0];
 
-
-        actualizarDatos();
-
-
-    } else {
-
-
-        error.innerText =
-            "❌ Contraseña incorrecta.";
-
-
-        campoPassword.value = "";
-
-
-        campoPassword.focus();
-
-    }
-
-}
-
-
-/* ========================================
-   CERRAR SESIÓN
-======================================== */
-
-function cerrarSesion() {
-
-    sessionStorage.removeItem(
-        "adminActivo"
-    );
-
-
-    document
-    .getElementById("panel")
-    .style.display = "none";
-
-
-    document
-    .getElementById("acceso")
-    .style.display = "flex";
-
-
-    document
-    .getElementById("password")
-    .value = "";
-
-
-    document
-    .getElementById("error")
-    .innerText = "";
-
-}
-
-
-/* ========================================
-   REGISTRAR ACTIVIDAD
-======================================== */
-
-function registrarActividad(texto) {
-
-    let actividades = [];
-
-
-    try {
-
-        actividades =
-            JSON.parse(
-                localStorage.getItem(
-                    "actividadAdmin"
-                )
-            ) || [];
-
-    } catch (error) {
-
-        actividades = [];
-
+    if (!file) {
+        return;
     }
 
 
-    actividades.unshift({
+    if (!file.type.startsWith("image/")) {
 
-        texto: texto,
-
-        fecha:
-            new Date()
-            .toLocaleString("es-CO")
-
-    });
-
-
-    localStorage.setItem(
-
-        "actividadAdmin",
-
-        JSON.stringify(
-            actividades
-        )
-
-    );
-
-}
-
-
-/* ========================================
-   MOSTRAR ACTIVIDAD
-======================================== */
-
-function mostrarActividad() {
-
-    const lista =
-        document
-        .getElementById("actividad");
-
-
-    let actividades = [];
-
-
-    try {
-
-        actividades =
-            JSON.parse(
-                localStorage.getItem(
-                    "actividadAdmin"
-                )
-            ) || [];
-
-    } catch (error) {
-
-        actividades = [];
-
-    }
-
-
-    lista.innerHTML = "";
-
-
-    if (actividades.length === 0) {
-
-        lista.innerHTML =
-            "<div class='elemento'>" +
-            "No hay actividad registrada todavía." +
-            "</div>";
+        alert("Selecciona una imagen válida.");
 
         return;
-
     }
 
 
-    actividades
-    .slice(0, 10)
-    .forEach(function(item) {
+    const reader = new FileReader();
 
 
-        const elemento =
-            document.createElement("div");
+    reader.onload = function(e) {
+
+        image = new Image();
+
+        image.onload = function() {
+
+            imageLoaded = true;
+
+            resetEditor();
+
+            editorArea.style.display = "block";
+
+            drawImage();
+
+        };
 
 
-        elemento.className =
-            "elemento";
+        image.src = e.target.result;
+
+    };
 
 
-        const titulo =
-            document.createElement("strong");
+    reader.readAsDataURL(file);
+
+});
 
 
-        titulo.innerText =
-            item.texto;
+/* =========================
+   DIBUJAR FOTO
+========================= */
+
+function drawImage() {
+
+    if (!imageLoaded) {
+        return;
+    }
 
 
-        const salto =
-            document.createElement("br");
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
 
 
-        const fecha =
-            document.createTextNode(
-                "📅 " + item.fecha
+    /*
+       FONDO
+    */
+
+    ctx.fillStyle = "#100006";
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    /*
+       CALCULAR ESCALA
+    */
+
+    const scale =
+        Math.max(
+            canvas.width / image.width,
+            canvas.height / image.height
+        );
+
+
+    const zoom =
+        parseFloat(zoomInput.value);
+
+
+    const finalScale =
+        scale * zoom;
+
+
+    const width =
+        image.width * finalScale;
+
+
+    const height =
+        image.height * finalScale;
+
+
+    /*
+       POSICION
+    */
+
+    const x =
+        (canvas.width - width) / 2 +
+        parseFloat(positionXInput.value);
+
+
+    const y =
+        (canvas.height - height) / 2 +
+        parseFloat(positionYInput.value);
+
+
+    /*
+       DIBUJAR
+    */
+
+    ctx.drawImage(
+        image,
+        x,
+        y,
+        width,
+        height
+    );
+
+}
+
+
+/* =========================
+   CONTROLES
+========================= */
+
+zoomInput.addEventListener(
+    "input",
+    drawImage
+);
+
+
+positionXInput.addEventListener(
+    "input",
+    drawImage
+);
+
+
+positionYInput.addEventListener(
+    "input",
+    drawImage
+);
+
+
+/* =========================
+   RESTABLECER
+========================= */
+
+function resetEditor() {
+
+    zoomInput.value = "1";
+
+    positionXInput.value = "0";
+
+    positionYInput.value = "0";
+
+    drawImage();
+
+}
+
+
+resetButton.addEventListener(
+    "click",
+    resetEditor
+);
+
+
+/* =========================
+   DESCARGAR
+========================= */
+
+downloadButton.addEventListener(
+    "click",
+    function() {
+
+        if (!imageLoaded) {
+
+            alert(
+                "Primero selecciona una foto."
+            );
+
+            return;
+        }
+
+
+        /*
+           CANVAS FINAL
+        */
+
+        const finalCanvas =
+            document.createElement("canvas");
+
+
+        finalCanvas.width = 800;
+
+        finalCanvas.height = 800;
+
+
+        const finalCtx =
+            finalCanvas.getContext("2d");
+
+
+        /*
+           FONDO
+        */
+
+        finalCtx.fillStyle = "#100006";
+
+        finalCtx.fillRect(
+            0,
+            0,
+            800,
+            800
+        );
+
+
+        /*
+           ESCALA
+        */
+
+        const scale =
+            Math.max(
+                800 / image.width,
+                800 / image.height
             );
 
 
-        elemento.appendChild(titulo);
-
-        elemento.appendChild(salto);
-
-        elemento.appendChild(fecha);
-
-
-        lista.appendChild(elemento);
-
-    });
-
-}
+        const zoom =
+            parseFloat(
+                zoomInput.value
+            );
 
 
-/* ========================================
-   DETECTAR DISPOSITIVO
-======================================== */
-
-function detectarDispositivo() {
-
-    const agente =
-        navigator.userAgent;
+        const finalScale =
+            scale * zoom;
 
 
-    let dispositivo =
-        "Computador";
+        const width =
+            image.width * finalScale;
 
 
-    if (/Android/i.test(agente)) {
-
-        dispositivo =
-            "Android";
-
-    }
-
-    else if (/iPhone|iPad|iPod/i.test(agente)) {
-
-        dispositivo =
-            "Apple";
-
-    }
-
-    else if (/Windows/i.test(agente)) {
-
-        dispositivo =
-            "Windows";
-
-    }
-
-    else if (/Macintosh/i.test(agente)) {
-
-        dispositivo =
-            "Mac";
-
-    }
-
-    else if (/Linux/i.test(agente)) {
-
-        dispositivo =
-            "Linux";
-
-    }
+        const height =
+            image.height * finalScale;
 
 
-    document
-    .getElementById("dispositivo")
-    .innerText =
-        dispositivo;
-
-}
-
-
-/* ========================================
-   ACTUALIZAR DATOS
-======================================== */
-
-function actualizarDatos() {
+        const x =
+            (800 - width) / 2 +
+            parseFloat(
+                positionXInput.value
+            ) * 2;
 
 
-    const visitas =
-        localStorage.getItem(
-            "contadorVisitasDemo"
-        ) || "0";
+        const y =
+            (800 - height) / 2 +
+            parseFloat(
+                positionYInput.value
+            ) * 2;
 
 
-    const interacciones =
-        localStorage.getItem(
-            "contadorInteraccionesDemo"
-        ) || "0";
+        /*
+           RECORTE CIRCULAR
+        */
+
+        finalCtx.save();
+
+        finalCtx.beginPath();
+
+        finalCtx.arc(
+            400,
+            400,
+            390,
+            0,
+            Math.PI * 2
+        );
+
+        finalCtx.closePath();
+
+        finalCtx.clip();
 
 
-    document
-    .getElementById("visitas")
-    .innerText =
-        visitas;
+        finalCtx.drawImage(
+            image,
+            x,
+            y,
+            width,
+            height
+        );
 
 
-    document
-    .getElementById("interacciones")
-    .innerText =
-        interacciones;
+        finalCtx.restore();
 
 
-    document
-    .getElementById("fecha")
-    .innerText =
-        new Date()
-        .toLocaleDateString("es-CO");
+        /*
+           BORDE DORADO
+        */
+
+        finalCtx.beginPath();
+
+        finalCtx.arc(
+            400,
+            400,
+            390,
+            0,
+            Math.PI * 2
+        );
+
+        finalCtx.strokeStyle =
+            "#d4af37";
+
+        finalCtx.lineWidth =
+            20;
+
+        finalCtx.stroke();
 
 
-    detectarDispositivo();
+        /*
+           CREAR JPG
+        */
+
+        finalCanvas.toBlob(
+            function(blob) {
+
+                const url =
+                    URL.createObjectURL(blob);
 
 
-    mostrarActividad();
+                const link =
+                    document.createElement("a");
 
-}
+
+                link.href = url;
+
+                link.download =
+                    "logotipe.jpg";
 
 
-/* ========================================
-   ENTER PARA INGRESAR
-======================================== */
+                document.body.appendChild(link);
 
-document
-.getElementById("password")
-.addEventListener(
-    "keydown",
-    function(event) {
+                link.click();
 
-        if (event.key === "Enter") {
+                document.body.removeChild(link);
 
-            entrar();
+                URL.revokeObjectURL(url);
 
-        }
+
+                /*
+                   VISTA PREVIA
+                */
+
+                previewImage.src =
+                    url;
+
+                previewImage.style.display =
+                    "block";
+
+                document.getElementById(
+                    "noPhoto"
+                ).style.display =
+                    "none";
+
+            },
+            "image/jpeg",
+            0.95
+        );
 
     }
 );
 
-
-/* ========================================
-   COMPROBAR SESIÓN
-======================================== */
-
-if (
-    sessionStorage.getItem(
-        "adminActivo"
-    ) === "si"
-) {
-
-
-    document
-    .getElementById("acceso")
-    .style.display = "none";
-
-
-    document
-    .getElementById("panel")
-    .style.display = "block";
-
-
-    actualizarDatos();
-
-}
-
 </script>
 
-
 </body>
-
 </html>
