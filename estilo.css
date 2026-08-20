@@ -1,112 +1,71 @@
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
+
 
 html {
     scroll-behavior: smooth;
 }
 
+
 body {
-    margin: 0;
-    min-height: 100vh;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    color: #ffffff;
-
-    background-color: #4b071b;
-
-    background-image:
-        radial-gradient(
-            circle,
-            rgba(255, 215, 120, 0.38) 1px,
-            transparent 1.5px
-        );
-
-    background-size: 28px 28px;
-}
-
-
-/* ==============================
-   ENCABEZADO
-============================== */
-
-header {
-    width: 100%;
-
-    text-align: center;
-
-    padding: 25px 15px;
+    font-family: "Times New Roman", serif;
 
     background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(212, 175, 55, 0.08) 0 2px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(212, 175, 55, 0.08) 0 2px,
+            transparent 3px
+        ),
         linear-gradient(
             135deg,
-            #a0153b,
-            #520018,
-            #8d1235
+            #080006,
+            #16000b,
+            #240013,
+            #090006
         );
 
-    border-bottom: 2px solid #e7bd57;
+    background-size:
+        80px 80px,
+        110px 110px,
+        auto;
 
-    box-shadow:
-        0 5px 25px rgba(0, 0, 0, 0.50);
+    color: #f8e7b0;
+
+    min-height: 100vh;
 }
 
 
-/* ==============================
-   FOTO DE PERFIL
-============================== */
+/* =========================================
+   CONTENEDORES
+========================================= */
 
-.foto-perfil {
-
-    width: 180px;
-    height: 180px;
-
-    margin: 0 auto 30px;
-
-    overflow: hidden;
-
-    border: 4px solid #ffd978;
-
-    border-radius: 50%;
-
-    background: #30000f;
-
-    box-shadow:
-        0 0 20px rgba(255, 217, 120, 0.65),
-        0 0 45px rgba(180, 0, 50, 0.50);
-
-    position: relative;
+.admin-container,
+.container {
+    width: min(94%, 1100px);
+    margin: auto;
 }
 
 
-/* FOTO */
+/* =========================================
+   HEADER
+========================================= */
 
-.foto-perfil img {
+.admin-header {
+    margin-top: 25px;
 
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: cover;
-
-    object-position: 50% 20%;
-
-    transform: scale(1.15);
-
-}
-
-
-/* SI LA FOTO NO CARGA */
-
-.foto-perfil.foto-error::after {
-
-    content: "📷";
-
-    position: absolute;
-
-    inset: 0;
+    padding: 25px;
 
     display: flex;
 
@@ -114,545 +73,753 @@ header {
 
     justify-content: center;
 
-    font-size: 55px;
+    gap: 20px;
 
-    color: #ffd978;
+    text-align: center;
 
+    border: 2px solid #d4af37;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2b0015,
+            #4a0020,
+            #250010
+        );
+
+    box-shadow:
+        0 0 20px rgba(212, 175, 55, 0.18),
+        inset 0 0 20px rgba(212, 175, 55, 0.05);
 }
 
 
-/* ==============================
-   TEXTOS
-============================== */
-
-header h1 {
-
-    margin: 5px 0;
-
-    color: #ffd978;
+.admin-header h1 {
+    color: #d4af37;
 
     font-size: clamp(
-        27px,
+        25px,
         5vw,
-        44px
+        40px
     );
 
-    text-shadow:
-        0 0 12px rgba(
-            255,
-            217,
-            120,
-            0.25
+    margin-bottom: 7px;
+}
+
+
+.admin-header p {
+    color: #f4e3ad;
+
+    font-size: 18px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================
+   LOGO JS
+========================================= */
+
+.js-logo {
+    width: 75px;
+
+    height: 75px;
+
+    border-radius: 50%;
+
+    border: 3px solid #d4af37;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #d4af37;
+
+    font-family: cursive;
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    background:
+        radial-gradient(
+            circle,
+            #5a0027,
+            #21000f
         );
+
+    box-shadow:
+        0 0 15px rgba(212, 175, 55, 0.3);
 }
 
 
-header p {
+/* =========================================
+   TARJETAS
+========================================= */
 
-    margin: 8px 0 0;
+.admin-card,
+.card {
+    margin-top: 25px;
 
-    color: #ffffff;
-
-    font-size: 16px;
-
-    line-height: 1.5;
-}
-
-
-/* ==============================
-   CONTENEDOR
-============================== */
-
-.contenedor {
-
-    width: 92%;
-
-    max-width: 1100px;
-
-    margin: 30px auto;
-}
-
-
-/* ==============================
-   CAJAS
-============================== */
-
-.caja {
+    padding: 25px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(125, 15, 50, 0.97),
-            rgba(60, 4, 22, 0.97)
+            rgba(76, 0, 35, 0.94),
+            rgba(35, 0, 18, 0.97)
         );
 
-    border: 1px solid #e7bd57;
+    border: 2px solid #d4af37;
 
-    border-radius: 20px;
-
-    padding: 24px;
-
-    margin-bottom: 25px;
+    border-radius: 18px;
 
     box-shadow:
-        0 12px 35px rgba(
-            0,
-            0,
-            0,
-            0.42
-        );
+        0 0 18px rgba(212, 175, 55, 0.12),
+        inset 0 0 25px rgba(0, 0, 0, 0.25);
+
+    text-align: center;
 }
 
 
-.caja h2 {
+.admin-card h2,
+.card h2 {
+    color: #d4af37;
 
-    margin-top: 0;
-
-    color: #ffd978;
-
-    font-size: clamp(
-        21px,
-        4vw,
-        28px
-    );
-}
-
-
-.caja p {
-
-    line-height: 1.6;
-}
-
-
-/* ==============================
-   CAMPOS
-============================== */
-
-input,
-textarea {
-
-    width: 100%;
-
-    background:
-        rgba(
-            15,
-            0,
-            6,
-            0.60
-        );
-
-    color: #ffffff;
-
-    border: 1px solid #e7bd57;
-
-    border-radius: 12px;
-
-    padding: 15px;
-
-    margin-top: 10px;
+    font-size: 28px;
 
     margin-bottom: 15px;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    font-size: 16px;
-
-    outline: none;
-
-    transition: 0.2s;
 }
 
 
-input::placeholder,
-textarea::placeholder {
+.admin-description {
+    max-width: 700px;
 
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.65
-        );
+    margin:
+        0 auto 22px auto;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    color: #f8e7b0;
 }
 
 
-input:focus,
-textarea:focus {
-
-    border-color: #fff1b0;
-
-    box-shadow:
-        0 0 16px
-        rgba(
-            255,
-            217,
-            120,
-            0.30
-        );
-}
-
-
-textarea {
-
-    min-height: 180px;
-
-    resize: vertical;
-}
-
-
-/* ==============================
+/* =========================================
    BOTONES
-============================== */
+========================================= */
 
-button {
+.gold-button,
+.secondary-button {
+    display: inline-flex;
 
-    border: none;
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding:
+        12px 22px;
 
     border-radius: 12px;
 
-    padding: 14px 20px;
+    font-family:
+        "Times New Roman",
+        serif;
 
-    margin: 4px;
-
-    font-size: 15px;
+    font-size: 17px;
 
     font-weight: bold;
 
     cursor: pointer;
 
+    transition:
+        0.25s ease;
+
+    text-decoration: none;
+}
+
+
+.gold-button {
+    color: #19000b;
+
     background:
         linear-gradient(
             135deg,
-            #ffe28a,
-            #c8942f
+            #f4d675,
+            #d4af37,
+            #a87d13
         );
 
-    color: #3b0616;
+    border: 2px solid #f6df8d;
 
     box-shadow:
-        0 5px 12px
-        rgba(
-            0,
-            0,
-            0,
+        0 0 12px rgba(
+            212,
+            175,
+            55,
             0.25
         );
-
-    transition:
-        transform 0.2s,
-        filter 0.2s;
 }
 
 
-button:hover {
+.gold-button:hover {
+    transform:
+        translateY(-2px);
 
-    transform: scale(1.03);
-
-    filter: brightness(1.10);
-}
-
-
-button:active {
-
-    transform: scale(0.98);
-}
-
-
-/* BOTÓN ROJO */
-
-.boton-rojo {
-
-    background:
-        linear-gradient(
-            135deg,
-            #e04461,
-            #8d1235
+    box-shadow:
+        0 0 20px rgba(
+            212,
+            175,
+            55,
+            0.4
         );
-
-    color: #ffffff;
 }
 
 
-/* BOTÓN VERDE */
+.secondary-button {
+    color: #f4df99;
 
-.boton-verde {
+    background: #330018;
 
-    background:
-        linear-gradient(
-            135deg,
-            #65d889,
-            #238348
-        );
-
-    color: #ffffff;
+    border: 2px solid #d4af37;
 }
 
 
-/* ==============================
-   ASISTENTE
-============================== */
+.secondary-button:hover {
+    background: #500025;
+}
 
-.asistente {
 
-    border: 2px solid #ffd978;
+/* =========================================
+   EDITOR
+========================================= */
 
+.editor-area {
+    display: none;
+
+    margin-top: 30px;
+}
+
+
+.crop-container {
     position: relative;
 
+    width: min(
+        90vw,
+        400px
+    );
+
+    height: min(
+        90vw,
+        400px
+    );
+
+    margin: 0 auto 25px auto;
+
+    border-radius: 50%;
+
     overflow: hidden;
-}
 
+    background: #100006;
 
-.asistente::before {
+    border: 4px solid #d4af37;
 
-    content: "✦";
-
-    position: absolute;
-
-    top: 8px;
-
-    right: 18px;
-
-    font-size: 48px;
-
-    color:
-        rgba(
-            255,
-            217,
-            120,
-            0.20
+    box-shadow:
+        0 0 25px rgba(
+            212,
+            175,
+            55,
+            0.2
         );
 }
 
 
-#respuesta {
+#cropCanvas {
+    width: 100%;
 
-    margin-top: 15px;
+    height: 100%;
 
-    min-height: 70px;
+    display: block;
+}
 
-    padding: 17px;
+
+.crop-circle {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    border: 3px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.45
+        );
+}
+
+
+/* =========================================
+   CONTROLES
+========================================= */
+
+.controls {
+    width: min(
+        100%,
+        650px
+    );
+
+    margin: auto;
+}
+
+
+.control-group {
+    margin: 20px 0;
+
+    text-align: left;
+}
+
+
+.control-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #f4df99;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+.control-group input[type="range"] {
+    width: 100%;
+
+    accent-color: #d4af37;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   BOTONES DEL EDITOR
+========================================= */
+
+.button-area {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    margin-top: 25px;
+}
+
+
+/* =========================================
+   INFORMACIÓN
+========================================= */
+
+.save-info {
+    max-width: 700px;
+
+    margin: 20px auto 0;
+
+    padding: 15px;
+
+    border-radius: 12px;
 
     background:
         rgba(
             0,
             0,
             0,
-            0.32
-        );
-
-    border:
-        1px solid
-        rgba(
-            255,
-            217,
-            120,
             0.25
         );
 
-    border-radius: 14px;
+    border: 1px solid
+        rgba(
+            212,
+            175,
+            55,
+            0.5
+        );
+
+    color: #f5e6b6;
+
+    line-height: 1.5;
+
+    font-size: 16px;
+}
+
+
+.instructions {
+    max-width: 700px;
+
+    margin: auto;
+
+    text-align: left;
+
+    line-height: 1.7;
+
+    font-size: 18px;
+}
+
+
+.instructions p {
+    padding: 9px 0;
+
+    border-bottom:
+        1px solid
+        rgba(
+            212,
+            175,
+            55,
+            0.18
+        );
+}
+
+
+.instructions strong {
+    color: #d4af37;
+}
+
+
+/* =========================================
+   VISTA PREVIA
+========================================= */
+
+.profile-preview {
+    width: 220px;
+
+    height: 220px;
+
+    margin: 20px auto;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    border: 5px solid #d4af37;
+
+    background: #100006;
+
+    box-shadow:
+        0 0 20px rgba(
+            212,
+            175,
+            55,
+            0.25
+        );
+}
+
+
+.profile-preview img {
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+.no-photo {
+    width: 100%;
+
+    height: 100%;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 70px;
+}
+
+
+.preview-text {
+    color: #f4df99;
+
+    font-size: 17px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.admin-footer {
+    margin:
+        30px 0;
+
+    padding: 20px;
+
+    text-align: center;
+
+    color: #d4af37;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   INDEX - HERO
+========================================= */
+
+.hero {
+    margin-top: 25px;
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #42001f,
+            #250012,
+            #4a0024
+        );
+
+    border: 2px solid #d4af37;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 25px rgba(
+            212,
+            175,
+            55,
+            0.15
+        );
+}
+
+
+.hero h1 {
+    color: #d4af37;
+
+    font-size: clamp(
+        28px,
+        6vw,
+        46px
+    );
+
+    margin-bottom: 10px;
+}
+
+
+.hero h2 {
+    color: #f5df99;
+
+    font-size: 22px;
+
+    margin-bottom: 20px;
+}
+
+
+.hero p {
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size: 19px;
 
     line-height: 1.6;
-
-    color: #fff4c8;
 }
 
 
-/* ==============================
-   CONTADOR
-============================== */
+/* =========================================
+   FOTO PUBLICA
+========================================= */
 
-.contador {
+.public-profile {
+    width: 190px;
 
-    color: #ffd978;
+    height: 190px;
 
-    font-size: 15px;
+    margin:
+        0 auto 20px auto;
 
-    margin-bottom: 18px;
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    border: 5px solid #d4af37;
+
+    box-shadow:
+        0 0 25px rgba(
+            212,
+            175,
+            55,
+            0.25
+        );
+
+    background: #100006;
 }
 
 
-/* ==============================
-   NOTAS
-============================== */
+.public-profile img {
+    width: 100%;
 
-#listaNotas {
+    height: 100%;
 
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* =========================================
+   SECCIONES PUBLICAS
+========================================= */
+
+.section-title {
+    text-align: center;
+
+    color: #d4af37;
+
+    font-size: 32px;
+
+    margin:
+        35px 0 20px;
+}
+
+
+.services-grid {
     display: grid;
 
     grid-template-columns:
         repeat(
             auto-fit,
             minmax(
-                260px,
+                220px,
                 1fr
             )
         );
 
-    gap: 18px;
+    gap: 20px;
 }
 
 
-.nota {
+.service-box {
+    padding: 25px;
+
+    text-align: center;
 
     background:
         linear-gradient(
             145deg,
-            #8a1437,
-            #480318
+            #4b0025,
+            #260013
         );
 
-    border: 1px solid #e7bd57;
+    border: 2px solid #d4af37;
 
     border-radius: 16px;
-
-    padding: 20px;
-
-    word-break: break-word;
-
-    box-shadow:
-        0 8px 22px
-        rgba(
-            0,
-            0,
-            0,
-            0.30
-        );
 }
 
 
-.nota h3 {
+.service-box h3 {
+    color: #d4af37;
 
-    margin-top: 0;
+    font-size: 22px;
 
-    color: #ffe59b;
-
-    font-size: 21px;
+    margin-bottom: 12px;
 }
 
 
-.nota p {
+.service-box p {
+    color: #f5e6b6;
 
-    white-space: pre-wrap;
+    font-size: 17px;
 
-    line-height: 1.65;
-
-    color: #ffffff;
+    line-height: 1.5;
 }
 
 
-.fecha {
-
-    color: #ffd978;
-
-    font-size: 12px;
-
-    margin-top: 16px;
-}
-
-
-/* ==============================
-   FOOTER
-============================== */
-
-footer {
-
-    text-align: center;
-
-    padding: 35px 15px;
-
-    color: #ffe7a5;
-
-    font-size: 14px;
-
-    line-height: 1.7;
-}
-
-
-/* ==============================
-   TABLET
-============================== */
-
-@media (max-width: 800px) {
-
-    .contenedor {
-
-        width: 94%;
-    }
-
-    .foto-perfil {
-
-        width: 165px;
-
-        height: 165px;
-    }
-
-}
-
-
-/* ==============================
-   CELULAR
-============================== */
+/* =========================================
+   RESPONSIVE CELULAR
+========================================= */
 
 @media (max-width: 600px) {
 
-    header {
-
-        padding:
-            22px 12px;
-    }
-
-
-    .contenedor {
-
+    .admin-container,
+    .container {
         width: 94%;
-
-        margin:
-            20px auto;
     }
 
 
-    .caja {
+    .admin-header {
+        flex-direction: column;
 
-        padding: 17px;
-
-        border-radius: 17px;
+        padding: 20px 12px;
     }
 
 
-    .foto-perfil {
-
-        width: 145px;
-
-        height: 145px;
-
-        border-width: 3px;
-
-        margin-bottom: 25px;
+    .admin-header h1 {
+        font-size: 27px;
     }
 
 
-    button {
+    .admin-header p {
+        font-size: 16px;
+    }
+
+
+    .admin-card,
+    .card {
+        padding: 18px 13px;
+    }
+
+
+    .admin-card h2,
+    .card h2 {
+        font-size: 24px;
+    }
+
+
+    .admin-description {
+        font-size: 16px;
+    }
+
+
+    .gold-button,
+    .secondary-button {
+        width: 100%;
+    }
+
+
+    .button-area {
+        flex-direction: column;
 
         width: 100%;
-
-        margin: 5px 0;
-
-        padding: 15px;
     }
 
 
-    #listaNotas {
+    .profile-preview {
+        width: 180px;
 
-        grid-template-columns: 1fr;
+        height: 180px;
     }
 
 
-    .nota {
-
-        padding: 17px;
+    .instructions {
+        font-size: 16px;
     }
 
 }
