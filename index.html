@@ -1,287 +1,647 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="theme-color"
-        content="#16000b"
-    >
-
-    <meta
-        name="description"
-        content="Juan Sebastian López - Sistemas y Tecnología"
-    >
-
-    <title>
-        Juan Sebastian López | Sistemas y Tecnología
-    </title>
-
-    <link
-        rel="stylesheet"
-        href="estilo.css"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080006">
+    <meta name="description" content="Mi Bloc de Notas Personal">
+    <title>Mi Bloc de Notas | Juan Sebastian López</title>
+    <link rel="stylesheet" href="estilo.css">
 </head>
-
 
 <body>
 
-<div class="container">
+<div class="decor decor1"></div>
+<div class="decor decor2"></div>
+<div class="decor decor3"></div>
+
+<header class="top">
+
+    <div class="profile">
+
+        <img
+            id="profileImage"
+            src="logotipe.jpg"
+            alt="Foto de perfil"
+        >
+
+    </div>
+
+    <div class="initials">JS</div>
+
+    <h1>Juan Sebastian López</h1>
+
+    <p class="subtitle">MI BLOC DE NOTAS</p>
+
+    <p class="welcome">
+        Mi espacio personal para guardar mis ideas,
+        apuntes y notas importantes.
+    </p>
+
+</header>
 
 
-    <!-- =========================
-         PRESENTACIÓN
-    ========================== -->
+<main class="main-container">
 
-    <section class="hero">
+    <!-- NUEVA NOTA -->
 
+    <section class="note-panel">
 
-        <!-- FOTO DE PERFIL -->
+        <h2>📝 Nueva nota</h2>
 
-        <div class="public-profile">
+        <input
+            type="text"
+            id="noteTitle"
+            placeholder="Título de la nota"
+        >
 
-            <img
-                src="logotipe.jpg"
-                alt="Juan Sebastian López"
-                onerror="
-                    this.src='https://via.placeholder.com/500x500/240013/d4af37?text=JS';
-                "
-            >
+        <textarea
+            id="noteText"
+            placeholder="Escribe aquí tu nota..."
+        ></textarea>
+
+        <div class="note-buttons">
+
+            <button onclick="saveNote()" class="gold-btn">
+                💾 Guardar nota
+            </button>
+
+            <button onclick="clearForm()" class="dark-btn">
+                Limpiar
+            </button>
 
         </div>
 
-
-        <h1>
-            Juan Sebastian López
-        </h1>
+    </section>
 
 
-        <h2>
-            Sistemas y Tecnología
+    <!-- BUSCADOR -->
+
+    <section class="search-panel">
+
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="🔎 Buscar una nota..."
+            oninput="showNotes()"
+        >
+
+    </section>
+
+
+    <!-- NOTAS -->
+
+    <section>
+
+        <h2 class="section-title">
+            📚 Mis notas
         </h2>
 
+        <div id="notesContainer"></div>
+
+    </section>
+
+
+    <!-- IA -->
+
+    <section class="ai-panel">
+
+        <div class="ai-icon">
+            🤖
+        </div>
+
+        <h2>Asistente IA</h2>
 
         <p>
-            Hola, soy Juan. Me apasiona el mundo
-            informático y estoy dispuesto y enfocado
-            en ayudarte con soluciones tecnológicas,
-            mantenimiento, instalación y soporte.
+            Escribe una pregunta o pídele ayuda con una nota.
         </p>
 
-    </section>
-
-
-    <!-- =========================
-         SERVICIOS
-    ========================== -->
-
-    <h2 class="section-title">
-        Mis Servicios
-    </h2>
-
-
-    <section class="services-grid">
-
-
-        <div class="service-box">
-
-            <h3>
-                💻 Mantenimiento
-            </h3>
-
-            <p>
-                Mantenimiento preventivo y correctivo
-                para computadores y equipos.
-            </p>
-
-        </div>
-
-
-        <div class="service-box">
-
-            <h3>
-                📶 Redes WiFi
-            </h3>
-
-            <p>
-                Configuración y optimización
-                de redes inalámbricas.
-            </p>
-
-        </div>
-
-
-        <div class="service-box">
-
-            <h3>
-                🛡️ Eliminación de virus
-            </h3>
-
-            <p>
-                Limpieza y optimización del sistema
-                para mejorar el funcionamiento.
-            </p>
-
-        </div>
-
-
-        <div class="service-box">
-
-            <h3>
-                💾 RAM y SSD
-            </h3>
-
-            <p>
-                Instalación y actualización de
-                memoria RAM y unidades SSD.
-            </p>
-
-        </div>
-
-
-        <div class="service-box">
-
-            <h3>
-                🖨️ Impresoras
-            </h3>
-
-            <p>
-                Instalación, configuración y
-                solución de problemas de impresoras.
-            </p>
-
-        </div>
-
-
-        <div class="service-box">
-
-            <h3>
-                📹 Cámaras WiFi
-            </h3>
-
-            <p>
-                Instalación y configuración
-                de cámaras de seguridad.
-            </p>
-
-        </div>
-
-
-        <div class="service-box">
-
-            <h3>
-                🔐 Protección de cuentas
-            </h3>
-
-            <p>
-                Ayuda con configuración de seguridad
-                y protección de cuentas.
-            </p>
-
-        </div>
-
-
-        <div class="service-box">
-
-            <h3>
-                📄 Office
-            </h3>
-
-            <p>
-                Configuración y soporte para
-                herramientas de oficina.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         PROYECTOS
-    ========================== -->
-
-    <h2 class="section-title">
-        Proyectos y Trabajos
-    </h2>
-
-
-    <section class="card">
-
-        <h2>
-            🛠️ Mis trabajos
-        </h2>
-
-        <p class="admin-description">
-
-            Aquí podrás mostrar tus trabajos,
-            mantenimientos, instalaciones,
-            configuraciones y proyectos tecnológicos.
-
-        </p>
-
-    </section>
-
-
-    <!-- =========================
-         CONTACTO
-    ========================== -->
-
-    <h2 class="section-title">
-        Contacto
-    </h2>
-
-
-    <section class="card">
-
-        <h2>
-            📱 Encuéntrame
-        </h2>
-
-
-        <p class="admin-description">
-
-            Sígueme en mis redes sociales como
-            <strong>
-                Juan L Sistemas y Tecnología
-            </strong>.
-
-        </p>
-
-
-        <a
-            class="gold-button"
-            href="https://wa.me/"
-            target="_blank"
+        <textarea
+            id="aiQuestion"
+            placeholder="Ejemplo: organiza esta nota..."
+        ></textarea>
+
+        <button
+            onclick="askAI()"
+            class="gold-btn"
         >
-            💬 WhatsApp
-        </a>
+            🤖 Preguntar a la IA
+        </button>
+
+        <div
+            id="aiResponse"
+            class="ai-response"
+        >
+        </div>
 
     </section>
 
 
-    <!-- =========================
-         PIE DE PAGINA
-    ========================== -->
+    <!-- INFORMACIÓN -->
 
-    <footer class="admin-footer">
+    <section class="info-panel">
 
-        © 2026 Juan Sebastian López |
-        Técnico en Sistemas
+        <h2>🔐 Mi espacio personal</h2>
 
-    </footer>
+        <p>
+            Este bloc de notas está diseñado para guardar
+            tus apuntes directamente en este dispositivo.
+        </p>
+
+        <button
+            onclick="openAdmin()"
+            class="admin-btn"
+        >
+            🔐 Panel administrador
+        </button>
+
+    </section>
+
+</main>
 
 
-</div>
+<footer>
+
+    © 2026 Juan Sebastian López |
+    Técnico en Sistemas
+
+</footer>
+
+
+<script>
+
+/* =========================================
+   FOTO DE PERFIL
+========================================= */
+
+const profileImage =
+    document.getElementById("profileImage");
+
+
+const savedPhoto =
+    localStorage.getItem("perfilBloc");
+
+
+if (savedPhoto) {
+
+    profileImage.src =
+        savedPhoto;
+
+}
+
+
+/* =========================================
+   NOTAS
+========================================= */
+
+let notes =
+    JSON.parse(
+        localStorage.getItem("misNotas")
+    ) || [];
+
+
+let editingId = null;
+
+
+/* =========================================
+   GUARDAR NOTA
+========================================= */
+
+function saveNote() {
+
+    const title =
+        document.getElementById(
+            "noteTitle"
+        ).value.trim();
+
+
+    const text =
+        document.getElementById(
+            "noteText"
+        ).value.trim();
+
+
+    if (!title && !text) {
+
+        alert(
+            "Escribe algo antes de guardar."
+        );
+
+        return;
+
+    }
+
+
+    if (editingId !== null) {
+
+        const note =
+            notes.find(
+                n => n.id === editingId
+            );
+
+
+        if (note) {
+
+            note.title =
+                title || "Sin título";
+
+            note.text =
+                text;
+
+            note.date =
+                new Date().toLocaleString();
+
+        }
+
+        editingId = null;
+
+    } else {
+
+        notes.unshift({
+
+            id: Date.now(),
+
+            title:
+                title || "Sin título",
+
+            text:
+                text,
+
+            date:
+                new Date().toLocaleString()
+
+        });
+
+    }
+
+
+    localStorage.setItem(
+        "misNotas",
+        JSON.stringify(notes)
+    );
+
+
+    clearForm();
+
+    showNotes();
+
+}
+
+
+/* =========================================
+   MOSTRAR NOTAS
+========================================= */
+
+function showNotes() {
+
+    const container =
+        document.getElementById(
+            "notesContainer"
+        );
+
+
+    const search =
+        document.getElementById(
+            "searchInput"
+        ).value.toLowerCase();
+
+
+    container.innerHTML = "";
+
+
+    const filtered =
+        notes.filter(note =>
+
+            note.title
+                .toLowerCase()
+                .includes(search)
+
+            ||
+
+            note.text
+                .toLowerCase()
+                .includes(search)
+
+        );
+
+
+    if (filtered.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                📭
+
+                <br><br>
+
+                No hay notas para mostrar.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    filtered.forEach(note => {
+
+        const article =
+            document.createElement(
+                "article"
+            );
+
+
+        article.className =
+            "note-card";
+
+
+        article.innerHTML = `
+
+            <h3>
+                ${escapeHTML(note.title)}
+            </h3>
+
+            <small>
+                ${escapeHTML(note.date)}
+            </small>
+
+            <p>
+                ${escapeHTML(note.text)}
+            </p>
+
+            <div class="card-buttons">
+
+                <button
+                    onclick="editNote(${note.id})"
+                    class="edit-btn"
+                >
+                    ✏️ Editar
+                </button>
+
+                <button
+                    onclick="deleteNote(${note.id})"
+                    class="delete-btn"
+                >
+                    🗑️ Eliminar
+                </button>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(
+            article
+        );
+
+    });
+
+}
+
+
+/* =========================================
+   EDITAR
+========================================= */
+
+function editNote(id) {
+
+    const note =
+        notes.find(
+            n => n.id === id
+        );
+
+
+    if (!note) return;
+
+
+    document.getElementById(
+        "noteTitle"
+    ).value =
+        note.title;
+
+
+    document.getElementById(
+        "noteText"
+    ).value =
+        note.text;
+
+
+    editingId =
+        id;
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* =========================================
+   ELIMINAR
+========================================= */
+
+function deleteNote(id) {
+
+    const confirmDelete =
+        confirm(
+            "¿Quieres eliminar esta nota?"
+        );
+
+
+    if (!confirmDelete) return;
+
+
+    notes =
+        notes.filter(
+            n => n.id !== id
+        );
+
+
+    localStorage.setItem(
+        "misNotas",
+        JSON.stringify(notes)
+    );
+
+
+    showNotes();
+
+}
+
+
+/* =========================================
+   LIMPIAR
+========================================= */
+
+function clearForm() {
+
+    document.getElementById(
+        "noteTitle"
+    ).value = "";
+
+
+    document.getElementById(
+        "noteText"
+    ).value = "";
+
+
+    editingId = null;
+
+}
+
+
+/* =========================================
+   PROTEGER HTML
+========================================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        text;
+
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================================
+   PANEL ADMIN
+========================================= */
+
+function openAdmin() {
+
+    const password =
+        prompt(
+            "🔐 Introduce la contraseña del administrador:"
+        );
+
+
+    if (
+        password ===
+        "JuanAdmin2026"
+    ) {
+
+        window.location.href =
+            "admin.html";
+
+    } else {
+
+        alert(
+            "❌ Contraseña incorrecta."
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   ASISTENTE
+========================================= */
+
+function askAI() {
+
+    const question =
+        document.getElementById(
+            "aiQuestion"
+        ).value.trim();
+
+
+    const response =
+        document.getElementById(
+            "aiResponse"
+        );
+
+
+    if (!question) {
+
+        response.innerHTML =
+            "Escribe algo para ayudarte.";
+
+        return;
+
+    }
+
+
+    /*
+       Esta es una IA local sencilla.
+       No necesita API ni pagar.
+    */
+
+
+    const q =
+        question.toLowerCase();
+
+
+    let answer = "";
+
+
+    if (
+        q.includes("organiza") ||
+        q.includes("orden")
+    ) {
+
+        answer =
+            "Puedo ayudarte a organizar la información. Divide tu nota en título, ideas principales, tareas y pendientes.";
+
+    }
+
+    else if (
+        q.includes("resumen") ||
+        q.includes("resume")
+    ) {
+
+        answer =
+            "Para crear un buen resumen, conserva las ideas principales y elimina información repetida o secundaria.";
+
+    }
+
+    else if (
+        q.includes("tarea") ||
+        q.includes("pendiente")
+    ) {
+
+        answer =
+            "Puedes convertir esta información en una lista de tareas: 1. Identificar lo importante. 2. Ordenarlo por prioridad. 3. Marcar cada tarea terminada.";
+
+    }
+
+    else {
+
+        answer =
+            "Puedo ayudarte a organizar tus ideas, resumir textos, crear listas de tareas y mejorar la estructura de tus notas. Para una IA en línea completa necesitaríamos conectar una API.";
+
+    }
+
+
+    response.innerHTML =
+        "🤖 <strong>Asistente:</strong><br><br>" +
+        answer;
+
+}
+
+
+/* =========================================
+   INICIAR
+========================================= */
+
+showNotes();
+
+</script>
 
 </body>
-
 </html>
