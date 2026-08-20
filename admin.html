@@ -1,702 +1,1201 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <meta name="theme-color" content="#16000b">
+    <meta
+        name="theme-color"
+        content="#240010"
+    >
 
-    <title>Panel Administrador | Juan Sebastian López</title>
+    <meta
+        name="description"
+        content="Panel privado de Mi Bloc de Notas"
+    >
 
-    <link rel="stylesheet" href="estilo.css">
+    <title>
+        Panel Privado | Juan Sebastian López
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="estilo.css"
+    >
+
 </head>
 
-<body class="admin-body">
+<body class="admin-page">
 
-    <div class="admin-container">
 
-        <header class="admin-header">
+<!-- =================================
+     DECORACIÓN
+================================= -->
 
-            <div class="js-logo">
+<div class="decor decor1"></div>
+<div class="decor decor2"></div>
+<div class="decor decor3"></div>
+
+
+<!-- =================================
+     LOGIN
+================================= -->
+
+<section
+    id="loginScreen"
+    class="admin-login"
+>
+
+    <div class="login-logo">
+        JS
+    </div>
+
+    <h1>
+        Panel Privado
+    </h1>
+
+    <p>
+        Mi Bloc de Notas
+    </p>
+
+    <div class="login-box">
+
+        <label for="adminPassword">
+            🔐 Contraseña
+        </label>
+
+        <input
+            type="password"
+            id="adminPassword"
+            placeholder="Escribe tu contraseña"
+            autocomplete="current-password"
+        >
+
+        <button
+            class="admin-main-button"
+            onclick="loginAdmin()"
+        >
+            🔓 Entrar al administrador
+        </button>
+
+        <div
+            id="loginError"
+            class="login-error"
+        ></div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     ADMINISTRADOR
+================================= -->
+
+<main
+    id="adminPanel"
+    class="admin-content"
+    style="display:none;"
+>
+
+
+<!-- =================================
+     ENCABEZADO
+================================= -->
+
+<header class="admin-top">
+
+    <div class="admin-logo">
+        JS
+    </div>
+
+    <h1>
+        Panel Privado
+    </h1>
+
+    <p>
+        Administración de Mi Bloc de Notas
+    </p>
+
+    <button
+        class="logout-button"
+        onclick="logoutAdmin()"
+    >
+        🚪 Cerrar sesión
+    </button>
+
+</header>
+
+
+<!-- =================================
+     FOTO DE PERFIL
+================================= -->
+
+<section class="admin-card">
+
+    <h2>
+        🖼️ Foto de perfil
+    </h2>
+
+    <p>
+        Sube una fotografía desde tu celular
+        o computador y selecciona qué parte
+        quieres mostrar.
+    </p>
+
+
+    <div class="admin-profile-preview">
+
+        <div
+            id="adminProfilePreview"
+            class="admin-profile-circle"
+        >
+
+            <div class="profile-js-admin">
                 JS
             </div>
 
-            <div>
-                <h1>Panel de Administrador</h1>
-
-                <p>
-                    Juan Sebastian López
-                    <br>
-                    Sistemas y Tecnología
-                </p>
-            </div>
-
-        </header>
-
-
-        <!-- PERFIL -->
-
-        <section class="admin-card">
-
-            <h2>📷 Foto de perfil</h2>
-
-            <p class="admin-description">
-                Selecciona una foto desde tu celular o computador.
-                Después podrás moverla y cambiar el zoom para que
-                la cara quede exactamente donde quieres.
-            </p>
-
-
-            <!-- BOTON SELECCIONAR -->
-
-            <label for="photoInput" class="gold-button">
-                📁 Seleccionar foto
-            </label>
-
-            <input
-                type="file"
-                id="photoInput"
-                accept="image/jpeg,image/jpg,image/png"
-                hidden
-            >
-
-
-            <!-- EDITOR -->
-
-            <div id="editorArea" class="editor-area">
-
-                <div class="crop-container">
-
-                    <canvas
-                        id="cropCanvas"
-                        width="400"
-                        height="400">
-                    </canvas>
-
-                    <div class="crop-circle"></div>
-
-                </div>
-
-
-                <div class="controls">
-
-                    <div class="control-group">
-
-                        <label for="zoom">
-                            🔍 Zoom
-                        </label>
-
-                        <input
-                            type="range"
-                            id="zoom"
-                            min="0.5"
-                            max="3"
-                            step="0.01"
-                            value="1"
-                        >
-
-                    </div>
-
-
-                    <div class="control-group">
-
-                        <label for="positionX">
-                            ↔️ Mover horizontalmente
-                        </label>
-
-                        <input
-                            type="range"
-                            id="positionX"
-                            min="-200"
-                            max="200"
-                            value="0"
-                        >
-
-                    </div>
-
-
-                    <div class="control-group">
-
-                        <label for="positionY">
-                            ↕️ Mover verticalmente
-                        </label>
-
-                        <input
-                            type="range"
-                            id="positionY"
-                            min="-200"
-                            max="200"
-                            value="0"
-                        >
-
-                    </div>
-
-                </div>
-
-
-                <div class="button-area">
-
-                    <button
-                        type="button"
-                        id="resetButton"
-                        class="secondary-button">
-
-                        ↺ Restablecer
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        id="downloadButton"
-                        class="gold-button">
-
-                        💾 Descargar logotipe.jpg
-
-                    </button>
-
-                </div>
-
-
-                <p class="save-info">
-
-                    Después de descargar la imagen,
-                    súbela a tu repositorio de GitHub y
-                    reemplaza la imagen anterior llamada
-                    <strong>logotipe.jpg</strong>.
-
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- VISTA PREVIA -->
-
-        <section class="admin-card">
-
-            <h2>👤 Vista previa</h2>
-
-            <div class="profile-preview">
-
-                <img
-                    id="previewImage"
-                    src="logotipe.jpg"
-                    alt="Foto de perfil"
-                    onerror="this.style.display='none'; document.getElementById('noPhoto').style.display='flex';"
-                >
-
-                <div
-                    id="noPhoto"
-                    class="no-photo"
-                    style="display:none;">
-
-                    📷
-
-                </div>
-
-            </div>
-
-            <p class="preview-text">
-                Así aparecerá tu foto en la página principal.
-            </p>
-
-        </section>
-
-
-        <!-- INFORMACION -->
-
-        <section class="admin-card">
-
-            <h2>⚠️ Cómo guardar la foto definitivamente</h2>
-
-            <div class="instructions">
-
-                <p>
-                    <strong>1.</strong>
-                    Selecciona tu foto.
-                </p>
-
-                <p>
-                    <strong>2.</strong>
-                    Ajusta el zoom.
-                </p>
-
-                <p>
-                    <strong>3.</strong>
-                    Mueve la foto hasta que la cara quede bien.
-                </p>
-
-                <p>
-                    <strong>4.</strong>
-                    Pulsa
-                    <strong>“Descargar logotipe.jpg”</strong>.
-                </p>
-
-                <p>
-                    <strong>5.</strong>
-                    Ve a tu repositorio de GitHub.
-                </p>
-
-                <p>
-                    <strong>6.</strong>
-                    Elimina o reemplaza el archivo
-                    <strong>logotipe.jpg</strong>.
-                </p>
-
-                <p>
-                    <strong>7.</strong>
-                    Sube la nueva imagen descargada.
-                </p>
-
-                <p>
-                    <strong>8.</strong>
-                    Espera unos minutos y actualiza tu página.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <footer class="admin-footer">
-
-            © 2026 Juan Sebastian López |
-            Técnico en Sistemas
-
-        </footer>
+        </div>
 
     </div>
 
 
+    <div class="upload-area">
+
+        <label
+            for="profileUpload"
+            class="upload-button"
+        >
+            📷 Elegir foto
+        </label>
+
+        <input
+            type="file"
+            id="profileUpload"
+            accept="image/jpeg,image/jpg,image/png,image/webp"
+            hidden
+        >
+
+    </div>
+
+
+    <!-- EDITOR DE FOTO -->
+
+    <div
+        id="photoEditor"
+        class="photo-editor"
+        style="display:none;"
+    >
+
+        <h3>
+            ✂️ Ajustar fotografía
+        </h3>
+
+
+        <p>
+            Usa el zoom y mueve la imagen
+            para elegir la parte que quieres mostrar.
+        </p>
+
+
+        <div class="crop-container">
+
+            <img
+                id="cropImage"
+                src=""
+                alt="Vista previa"
+            >
+
+        </div>
+
+
+        <label for="zoomRange">
+            🔍 Tamaño de la foto
+        </label>
+
+        <input
+            type="range"
+            id="zoomRange"
+            min="100"
+            max="300"
+            value="100"
+            class="zoom-range"
+        >
+
+
+        <div class="photo-controls">
+
+            <button
+                type="button"
+                class="admin-action"
+                onclick="movePhoto('up')"
+            >
+                ⬆️
+            </button>
+
+            <button
+                type="button"
+                class="admin-action"
+                onclick="movePhoto('left')"
+            >
+                ⬅️
+            </button>
+
+            <button
+                type="button"
+                class="admin-action"
+                onclick="movePhoto('center')"
+            >
+                🎯
+            </button>
+
+            <button
+                type="button"
+                class="admin-action"
+                onclick="movePhoto('right')"
+            >
+                ➡️
+            </button>
+
+            <button
+                type="button"
+                class="admin-action"
+                onclick="movePhoto('down')"
+            >
+                ⬇️
+            </button>
+
+        </div>
+
+
+        <div class="photo-buttons">
+
+            <button
+                type="button"
+                class="save-photo-button"
+                onclick="saveProfilePhoto()"
+            >
+                💾 Guardar foto
+            </button>
+
+            <button
+                type="button"
+                class="cancel-photo-button"
+                onclick="cancelPhoto()"
+            >
+                ❌ Cancelar
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     INFORMACIÓN
+================================= -->
+
+<section class="admin-card">
+
+    <h2>
+        🔐 Privacidad
+    </h2>
+
+    <p>
+        Las notas de este Bloc se guardan
+        localmente en el navegador de este
+        dispositivo mediante almacenamiento
+        local.
+    </p>
+
+    <p class="privacy-warning">
+
+        ⚠️ No compartas este dispositivo
+        con personas en las que no confíes.
+
+    </p>
+
+</section>
+
+
+<!-- =================================
+     RESUMEN
+================================= -->
+
+<section class="admin-card">
+
+    <h2>
+        📊 Resumen
+    </h2>
+
+    <div class="admin-stats">
+
+        <div class="stat-box">
+
+            <strong id="totalNotes">
+                0
+            </strong>
+
+            <span>
+                Notas
+            </span>
+
+        </div>
+
+
+        <div class="stat-box">
+
+            <strong id="totalCharacters">
+                0
+            </strong>
+
+            <span>
+                Caracteres
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     ADMINISTRAR NOTAS
+================================= -->
+
+<section class="admin-card">
+
+    <h2>
+        📝 Administrar notas
+    </h2>
+
+    <div
+        id="adminNotesContainer"
+        class="admin-notes"
+    ></div>
+
+</section>
+
+
+<!-- =================================
+     PIE
+================================= -->
+
+<footer class="admin-footer">
+
+    © 2026 Juan Sebastian López |
+    Panel privado
+
+</footer>
+
+
+</main>
+
+
 <script>
 
-const photoInput =
-    document.getElementById("photoInput");
+/* =========================================
+   CONTRASEÑA
+========================================= */
 
-const canvas =
-    document.getElementById("cropCanvas");
-
-const ctx =
-    canvas.getContext("2d");
-
-const zoomInput =
-    document.getElementById("zoom");
-
-const positionXInput =
-    document.getElementById("positionX");
-
-const positionYInput =
-    document.getElementById("positionY");
-
-const resetButton =
-    document.getElementById("resetButton");
-
-const downloadButton =
-    document.getElementById("downloadButton");
-
-const previewImage =
-    document.getElementById("previewImage");
-
-const editorArea =
-    document.getElementById("editorArea");
+const ADMIN_PASSWORD =
+    "JuanAdmin2026";
 
 
-let image = new Image();
+/* =========================================
+   VARIABLES
+========================================= */
 
-let imageLoaded = false;
+let notes =
+    JSON.parse(
+        localStorage.getItem("misNotas")
+    ) || [];
 
 
-/* =========================
-   SELECCIONAR FOTO
-========================= */
+let profileImageData =
+    localStorage.getItem("perfilBloc") || "";
 
-photoInput.addEventListener("change", function(event) {
 
-    const file = event.target.files[0];
+let currentImage = null;
 
-    if (!file) {
-        return;
+
+let photoX = 0;
+
+let photoY = 0;
+
+let photoZoom = 100;
+
+
+/* =========================================
+   LOGIN
+========================================= */
+
+function loginAdmin() {
+
+    const password =
+        document
+            .getElementById("adminPassword")
+            .value;
+
+
+    const error =
+        document
+            .getElementById("loginError");
+
+
+    if (
+        password === ADMIN_PASSWORD
+    ) {
+
+        sessionStorage.setItem(
+            "adminLogged",
+            "true"
+        );
+
+
+        document
+            .getElementById("loginScreen")
+            .style.display = "none";
+
+
+        document
+            .getElementById("adminPanel")
+            .style.display = "block";
+
+
+        loadAdmin();
+
+    } else {
+
+        error.textContent =
+            "❌ Contraseña incorrecta.";
+
     }
 
-
-    if (!file.type.startsWith("image/")) {
-
-        alert("Selecciona una imagen válida.");
-
-        return;
-    }
+}
 
 
-    const reader = new FileReader();
+/* =========================================
+   ENTER PARA LOGIN
+========================================= */
 
+document
+    .getElementById("adminPassword")
+    .addEventListener(
+        "keydown",
+        function(event) {
 
-    reader.onload = function(e) {
+            if (
+                event.key === "Enter"
+            ) {
 
-        image = new Image();
+                loginAdmin();
 
-        image.onload = function() {
+            }
 
-            imageLoaded = true;
-
-            resetEditor();
-
-            editorArea.style.display = "block";
-
-            drawImage();
-
-        };
-
-
-        image.src = e.target.result;
-
-    };
-
-
-    reader.readAsDataURL(file);
-
-});
-
-
-/* =========================
-   DIBUJAR FOTO
-========================= */
-
-function drawImage() {
-
-    if (!imageLoaded) {
-        return;
-    }
-
-
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
+        }
     );
 
 
-    /*
-       FONDO
-    */
+/* =========================================
+   CERRAR SESIÓN
+========================================= */
 
-    ctx.fillStyle = "#100006";
+function logoutAdmin() {
+
+    sessionStorage.removeItem(
+        "adminLogged"
+    );
+
+
+    location.reload();
+
+}
+
+
+/* =========================================
+   VERIFICAR SESIÓN
+========================================= */
+
+function checkLogin() {
+
+    if (
+        sessionStorage.getItem(
+            "adminLogged"
+        ) === "true"
+    ) {
+
+        document
+            .getElementById("loginScreen")
+            .style.display = "none";
+
+
+        document
+            .getElementById("adminPanel")
+            .style.display = "block";
+
+
+        loadAdmin();
+
+    }
+
+}
+
+
+/* =========================================
+   CARGAR ADMIN
+========================================= */
+
+function loadAdmin() {
+
+    notes =
+        JSON.parse(
+            localStorage.getItem("misNotas")
+        ) || [];
+
+
+    profileImageData =
+        localStorage.getItem(
+            "perfilBloc"
+        ) || "";
+
+
+    showProfile();
+
+    showAdminNotes();
+
+    updateStats();
+
+}
+
+
+/* =========================================
+   MOSTRAR FOTO
+========================================= */
+
+function showProfile() {
+
+    const preview =
+        document
+            .getElementById(
+                "adminProfilePreview"
+            );
+
+
+    if (
+        profileImageData
+    ) {
+
+        preview.innerHTML = `
+
+            <img
+                src="${profileImageData}"
+                alt="Foto de perfil"
+            >
+
+        `;
+
+    } else {
+
+        preview.innerHTML = `
+
+            <div class="profile-js-admin">
+                JS
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =========================================
+   SELECCIONAR FOTO
+========================================= */
+
+document
+    .getElementById("profileUpload")
+    .addEventListener(
+        "change",
+        function(event) {
+
+            const file =
+                event.target.files[0];
+
+
+            if (!file) {
+
+                return;
+
+            }
+
+
+            if (
+                !file.type.startsWith("image/")
+            ) {
+
+                alert(
+                    "Selecciona una imagen."
+                );
+
+                return;
+
+            }
+
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload =
+                function(e) {
+
+                    currentImage =
+                        e.target.result;
+
+
+                    photoX = 0;
+
+                    photoY = 0;
+
+                    photoZoom = 100;
+
+
+                    document
+                        .getElementById(
+                            "cropImage"
+                        )
+                        .src =
+                        currentImage;
+
+
+                    document
+                        .getElementById(
+                            "zoomRange"
+                        )
+                        .value =
+                        100;
+
+
+                    document
+                        .getElementById(
+                            "photoEditor"
+                        )
+                        .style.display =
+                        "block";
+
+
+                    updateCrop();
+
+                };
+
+
+            reader.readAsDataURL(file);
+
+        }
+    );
+
+
+/* =========================================
+   ACTUALIZAR RECORTE
+========================================= */
+
+function updateCrop() {
+
+    const image =
+        document
+            .getElementById(
+                "cropImage"
+            );
+
+
+    image.style.transform =
+        `
+        translate(
+            ${photoX}px,
+            ${photoY}px
+        )
+        scale(
+            ${photoZoom / 100}
+        )
+        `;
+
+}
+
+
+/* =========================================
+   ZOOM
+========================================= */
+
+document
+    .getElementById("zoomRange")
+    .addEventListener(
+        "input",
+        function() {
+
+            photoZoom =
+                Number(this.value);
+
+
+            updateCrop();
+
+        }
+    );
+
+
+/* =========================================
+   MOVER FOTO
+========================================= */
+
+function movePhoto(direction) {
+
+    const step = 15;
+
+
+    if (
+        direction === "up"
+    ) {
+
+        photoY -= step;
+
+    }
+
+
+    if (
+        direction === "down"
+    ) {
+
+        photoY += step;
+
+    }
+
+
+    if (
+        direction === "left"
+    ) {
+
+        photoX -= step;
+
+    }
+
+
+    if (
+        direction === "right"
+    ) {
+
+        photoX += step;
+
+    }
+
+
+    if (
+        direction === "center"
+    ) {
+
+        photoX = 0;
+
+        photoY = 0;
+
+        photoZoom = 100;
+
+        document
+            .getElementById(
+                "zoomRange"
+            )
+            .value =
+            100;
+
+    }
+
+
+    updateCrop();
+
+}
+
+
+/* =========================================
+   GUARDAR FOTO
+========================================= */
+
+function saveProfilePhoto() {
+
+    const image =
+        document
+            .getElementById(
+                "cropImage"
+            );
+
+
+    if (
+        !image.src
+    ) {
+
+        alert(
+            "Primero selecciona una foto."
+        );
+
+        return;
+
+    }
+
+
+    const canvas =
+        document.createElement(
+            "canvas"
+        );
+
+
+    const size = 700;
+
+
+    canvas.width = size;
+
+    canvas.height = size;
+
+
+    const ctx =
+        canvas.getContext("2d");
+
+
+    ctx.fillStyle =
+        "#100006";
+
 
     ctx.fillRect(
         0,
         0,
-        canvas.width,
-        canvas.height
+        size,
+        size
     );
 
 
-    /*
-       CALCULAR ESCALA
-    */
-
-    const scale =
-        Math.max(
-            canvas.width / image.width,
-            canvas.height / image.height
-        );
+    const img =
+        new Image();
 
 
-    const zoom =
-        parseFloat(zoomInput.value);
+    img.onload =
+        function() {
+
+            const scale =
+                Math.max(
+                    size / img.width,
+                    size / img.height
+                );
 
 
-    const finalScale =
-        scale * zoom;
+            const width =
+                img.width * scale;
 
 
-    const width =
-        image.width * finalScale;
+            const height =
+                img.height * scale;
 
 
-    const height =
-        image.height * finalScale;
+            const x =
+                (size - width) / 2;
 
 
-    /*
-       POSICION
-    */
-
-    const x =
-        (canvas.width - width) / 2 +
-        parseFloat(positionXInput.value);
+            const y =
+                (size - height) / 2;
 
 
-    const y =
-        (canvas.height - height) / 2 +
-        parseFloat(positionYInput.value);
+            ctx.save();
 
 
-    /*
-       DIBUJAR
-    */
-
-    ctx.drawImage(
-        image,
-        x,
-        y,
-        width,
-        height
-    );
-
-}
+            ctx.beginPath();
 
 
-/* =========================
-   CONTROLES
-========================= */
-
-zoomInput.addEventListener(
-    "input",
-    drawImage
-);
-
-
-positionXInput.addEventListener(
-    "input",
-    drawImage
-);
+            ctx.arc(
+                size / 2,
+                size / 2,
+                size / 2,
+                0,
+                Math.PI * 2
+            );
 
 
-positionYInput.addEventListener(
-    "input",
-    drawImage
-);
+            ctx.clip();
 
 
-/* =========================
-   RESTABLECER
-========================= */
-
-function resetEditor() {
-
-    zoomInput.value = "1";
-
-    positionXInput.value = "0";
-
-    positionYInput.value = "0";
-
-    drawImage();
-
-}
+            ctx.drawImage(
+                img,
+                x + photoX,
+                y + photoY,
+                width * (photoZoom / 100),
+                height * (photoZoom / 100)
+            );
 
 
-resetButton.addEventListener(
-    "click",
-    resetEditor
-);
+            ctx.restore();
 
 
-/* =========================
-   DESCARGAR
-========================= */
+            const finalImage =
+                canvas.toDataURL(
+                    "image/jpeg",
+                    0.90
+                );
 
-downloadButton.addEventListener(
-    "click",
-    function() {
 
-        if (!imageLoaded) {
+            localStorage.setItem(
+                "perfilBloc",
+                finalImage
+            );
+
+
+            profileImageData =
+                finalImage;
+
+
+            showProfile();
+
+
+            document
+                .getElementById(
+                    "photoEditor"
+                )
+                .style.display =
+                "none";
+
 
             alert(
-                "Primero selecciona una foto."
+                "✅ Foto guardada correctamente."
             );
 
-            return;
-        }
+        };
 
 
-        /*
-           CANVAS FINAL
-        */
+    img.src =
+        currentImage;
 
-        const finalCanvas =
-            document.createElement("canvas");
+}
 
 
-        finalCanvas.width = 800;
+/* =========================================
+   CANCELAR FOTO
+========================================= */
 
-        finalCanvas.height = 800;
+function cancelPhoto() {
 
-
-        const finalCtx =
-            finalCanvas.getContext("2d");
-
-
-        /*
-           FONDO
-        */
-
-        finalCtx.fillStyle = "#100006";
-
-        finalCtx.fillRect(
-            0,
-            0,
-            800,
-            800
-        );
+    currentImage = null;
 
 
-        /*
-           ESCALA
-        */
-
-        const scale =
-            Math.max(
-                800 / image.width,
-                800 / image.height
-            );
+    document
+        .getElementById(
+            "profileUpload"
+        )
+        .value = "";
 
 
-        const zoom =
-            parseFloat(
-                zoomInput.value
+    document
+        .getElementById(
+            "photoEditor"
+        )
+        .style.display =
+        "none";
+
+}
+
+
+/* =========================================
+   MOSTRAR NOTAS
+========================================= */
+
+function showAdminNotes() {
+
+    const container =
+        document
+            .getElementById(
+                "adminNotesContainer"
             );
 
 
-        const finalScale =
-            scale * zoom;
+    container.innerHTML = "";
 
 
-        const width =
-            image.width * finalScale;
+    if (
+        notes.length === 0
+    ) {
 
+        container.innerHTML = `
 
-        const height =
-            image.height * finalScale;
+            <div class="empty">
+                📭 No hay notas guardadas.
+            </div>
 
+        `;
 
-        const x =
-            (800 - width) / 2 +
-            parseFloat(
-                positionXInput.value
-            ) * 2;
-
-
-        const y =
-            (800 - height) / 2 +
-            parseFloat(
-                positionYInput.value
-            ) * 2;
-
-
-        /*
-           RECORTE CIRCULAR
-        */
-
-        finalCtx.save();
-
-        finalCtx.beginPath();
-
-        finalCtx.arc(
-            400,
-            400,
-            390,
-            0,
-            Math.PI * 2
-        );
-
-        finalCtx.closePath();
-
-        finalCtx.clip();
-
-
-        finalCtx.drawImage(
-            image,
-            x,
-            y,
-            width,
-            height
-        );
-
-
-        finalCtx.restore();
-
-
-        /*
-           BORDE DORADO
-        */
-
-        finalCtx.beginPath();
-
-        finalCtx.arc(
-            400,
-            400,
-            390,
-            0,
-            Math.PI * 2
-        );
-
-        finalCtx.strokeStyle =
-            "#d4af37";
-
-        finalCtx.lineWidth =
-            20;
-
-        finalCtx.stroke();
-
-
-        /*
-           CREAR JPG
-        */
-
-        finalCanvas.toBlob(
-            function(blob) {
-
-                const url =
-                    URL.createObjectURL(blob);
-
-
-                const link =
-                    document.createElement("a");
-
-
-                link.href = url;
-
-                link.download =
-                    "logotipe.jpg";
-
-
-                document.body.appendChild(link);
-
-                link.click();
-
-                document.body.removeChild(link);
-
-                URL.revokeObjectURL(url);
-
-
-                /*
-                   VISTA PREVIA
-                */
-
-                previewImage.src =
-                    url;
-
-                previewImage.style.display =
-                    "block";
-
-                document.getElementById(
-                    "noPhoto"
-                ).style.display =
-                    "none";
-
-            },
-            "image/jpeg",
-            0.95
-        );
+        return;
 
     }
-);
+
+
+    notes.forEach(
+        function(note) {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "admin-note";
+
+
+            card.innerHTML = `
+
+                <h3>
+                    ${escapeHTML(note.title)}
+                </h3>
+
+                <small>
+                    ${escapeHTML(note.date)}
+                </small>
+
+                <p>
+                    ${escapeHTML(note.text)}
+                </p>
+
+                <button
+                    class="delete-admin"
+                    onclick="deleteAdminNote(${note.id})"
+                >
+                    🗑️ Eliminar nota
+                </button>
+
+            `;
+
+
+            container.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   ELIMINAR NOTA
+========================================= */
+
+function deleteAdminNote(id) {
+
+    if (
+        !confirm(
+            "¿Seguro que quieres eliminar esta nota?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    notes =
+        notes.filter(
+            function(note) {
+
+                return note.id !== id;
+
+            }
+        );
+
+
+    localStorage.setItem(
+        "misNotas",
+        JSON.stringify(notes)
+    );
+
+
+    showAdminNotes();
+
+    updateStats();
+
+}
+
+
+/* =========================================
+   ESTADÍSTICAS
+========================================= */
+
+function updateStats() {
+
+    const total =
+        notes.length;
+
+
+    const characters =
+        notes.reduce(
+            function(total, note) {
+
+                return total +
+                    note.title.length +
+                    note.text.length;
+
+            },
+            0
+        );
+
+
+    document
+        .getElementById(
+            "totalNotes"
+        )
+        .textContent =
+        total;
+
+
+    document
+        .getElementById(
+            "totalCharacters"
+        )
+        .textContent =
+        characters;
+
+}
+
+
+/* =========================================
+   SEGURIDAD DE TEXTO
+========================================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        text;
+
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================================
+   INICIAR
+========================================= */
+
+checkLogin();
 
 </script>
 
 </body>
+
 </html>
