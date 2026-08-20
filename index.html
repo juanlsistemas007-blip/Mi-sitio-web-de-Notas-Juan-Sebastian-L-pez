@@ -3,626 +3,284 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<meta name="theme-color" content="#7b102c">
+    <meta
+        name="theme-color"
+        content="#16000b"
+    >
 
-<meta name="description"
-content="Mi Bloc de Notas personal de Juan Sebastian López">
+    <meta
+        name="description"
+        content="Juan Sebastian López - Sistemas y Tecnología"
+    >
 
-<link rel="stylesheet" href="estilo.css">
+    <title>
+        Juan Sebastian López | Sistemas y Tecnología
+    </title>
 
-<link rel="manifest" href="manifest.json">
-
-<title>Mi Bloc de Notas | Juan Sebastian López</title>
+    <link
+        rel="stylesheet"
+        href="estilo.css"
+    >
 
 </head>
 
 
 <body>
 
-
-<header>
-
-    <div class="foto-perfil">
-
-        <img
-            src="./logotipe.jpg"
-            alt="Foto de perfil de Juan Sebastian López"
-            onerror="this.style.display='none'; this.parentElement.classList.add('foto-error');"
-        >
-
-    </div>
+<div class="container">
 
 
-    <h1>
-        📖 Mi Bloc de Notas
-    </h1>
+    <!-- =========================
+         PRESENTACIÓN
+    ========================== -->
+
+    <section class="hero">
 
 
-    <p>
-        Juan Sebastian López
-    </p>
+        <!-- FOTO DE PERFIL -->
+
+        <div class="public-profile">
+
+            <img
+                src="logotipe.jpg"
+                alt="Juan Sebastian López"
+                onerror="
+                    this.src='https://via.placeholder.com/500x500/240013/d4af37?text=JS';
+                "
+            >
+
+        </div>
 
 
-    <p>
-        Guarda tus ideas, proyectos y pensamientos
-    </p>
+        <h1>
+            Juan Sebastian López
+        </h1>
 
-</header>
-
-
-
-<main class="contenedor">
-
-
-    <section class="caja">
 
         <h2>
-            ✍️ Nueva nota
-        </h2>
-
-
-        <input
-            type="text"
-            id="titulo"
-            placeholder="Escribe el título de tu nota..."
-        >
-
-
-        <textarea
-            id="contenido"
-            placeholder="Escribe aquí tu nota..."
-        ></textarea>
-
-
-        <button onclick="guardarNota()">
-            💾 Guardar nota
-        </button>
-
-    </section>
-
-
-
-    <section class="caja asistente">
-
-        <h2>
-            🤖 Asistente de mis notas
+            Sistemas y Tecnología
         </h2>
 
 
         <p>
-            Pregunta sobre las notas que has guardado.
+            Hola, soy Juan. Me apasiona el mundo
+            informático y estoy dispuesto y enfocado
+            en ayudarte con soluciones tecnológicas,
+            mantenimiento, instalación y soporte.
         </p>
 
-
-        <input
-            type="text"
-            id="pregunta"
-            placeholder="Ejemplo: ¿Qué escribí sobre mi proyecto?"
-        >
+    </section>
 
 
-        <button
-            class="boton-verde"
-            onclick="preguntarAsistente()"
-        >
-            🤖 Preguntar
-        </button>
+    <!-- =========================
+         SERVICIOS
+    ========================== -->
+
+    <h2 class="section-title">
+        Mis Servicios
+    </h2>
 
 
-        <div id="respuesta">
+    <section class="services-grid">
 
-            👋 Hola Juan. Guarda algunas notas y después
-            puedes preguntarme sobre lo que escribiste.
+
+        <div class="service-box">
+
+            <h3>
+                💻 Mantenimiento
+            </h3>
+
+            <p>
+                Mantenimiento preventivo y correctivo
+                para computadores y equipos.
+            </p>
+
+        </div>
+
+
+        <div class="service-box">
+
+            <h3>
+                📶 Redes WiFi
+            </h3>
+
+            <p>
+                Configuración y optimización
+                de redes inalámbricas.
+            </p>
+
+        </div>
+
+
+        <div class="service-box">
+
+            <h3>
+                🛡️ Eliminación de virus
+            </h3>
+
+            <p>
+                Limpieza y optimización del sistema
+                para mejorar el funcionamiento.
+            </p>
+
+        </div>
+
+
+        <div class="service-box">
+
+            <h3>
+                💾 RAM y SSD
+            </h3>
+
+            <p>
+                Instalación y actualización de
+                memoria RAM y unidades SSD.
+            </p>
+
+        </div>
+
+
+        <div class="service-box">
+
+            <h3>
+                🖨️ Impresoras
+            </h3>
+
+            <p>
+                Instalación, configuración y
+                solución de problemas de impresoras.
+            </p>
+
+        </div>
+
+
+        <div class="service-box">
+
+            <h3>
+                📹 Cámaras WiFi
+            </h3>
+
+            <p>
+                Instalación y configuración
+                de cámaras de seguridad.
+            </p>
+
+        </div>
+
+
+        <div class="service-box">
+
+            <h3>
+                🔐 Protección de cuentas
+            </h3>
+
+            <p>
+                Ayuda con configuración de seguridad
+                y protección de cuentas.
+            </p>
+
+        </div>
+
+
+        <div class="service-box">
+
+            <h3>
+                📄 Office
+            </h3>
+
+            <p>
+                Configuración y soporte para
+                herramientas de oficina.
+            </p>
 
         </div>
 
     </section>
 
 
+    <!-- =========================
+         PROYECTOS
+    ========================== -->
 
-    <section class="caja">
+    <h2 class="section-title">
+        Proyectos y Trabajos
+    </h2>
+
+
+    <section class="card">
 
         <h2>
-            📚 Mis notas
+            🛠️ Mis trabajos
         </h2>
 
+        <p class="admin-description">
 
-        <div
-            class="contador"
-            id="contador"
-        >
-            Aún no tienes notas guardadas.
-        </div>
+            Aquí podrás mostrar tus trabajos,
+            mantenimientos, instalaciones,
+            configuraciones y proyectos tecnológicos.
 
-
-        <div id="listaNotas"></div>
+        </p>
 
     </section>
 
 
+    <!-- =========================
+         CONTACTO
+    ========================== -->
 
-    <section class="caja">
+    <h2 class="section-title">
+        Contacto
+    </h2>
+
+
+    <section class="card">
 
         <h2>
-            📱 Instalar aplicación
+            📱 Encuéntrame
         </h2>
 
 
-        <p>
+        <p class="admin-description">
 
-            Puedes añadir este Bloc de Notas a la pantalla
-            de inicio de tu celular o instalarlo en un
-            computador compatible.
+            Sígueme en mis redes sociales como
+            <strong>
+                Juan L Sistemas y Tecnología
+            </strong>.
 
         </p>
 
 
-        <button onclick="mostrarInstalacion()">
-
-            📲 Ver cómo instalar
-
-        </button>
+        <a
+            class="gold-button"
+            href="https://wa.me/"
+            target="_blank"
+        >
+            💬 WhatsApp
+        </a>
 
     </section>
 
 
-</main>
+    <!-- =========================
+         PIE DE PAGINA
+    ========================== -->
 
+    <footer class="admin-footer">
 
+        © 2026 Juan Sebastian López |
+        Técnico en Sistemas
 
-<footer>
+    </footer>
 
-    © 2026 Juan Sebastian López
 
-    <br><br>
-
-    Mi Bloc de Notas Rubí 👑❤️
-
-</footer>
-
-
-
-<script>
-
-
-let notas = [];
-
-try {
-
-    notas =
-        JSON.parse(
-            localStorage.getItem("misNotas")
-        ) || [];
-
-} catch (error) {
-
-    notas = [];
-
-}
-
-
-
-function mostrarNotas() {
-
-    const lista =
-        document.getElementById("listaNotas");
-
-    const contador =
-        document.getElementById("contador");
-
-
-    lista.innerHTML = "";
-
-
-    if (notas.length === 0) {
-
-        lista.innerHTML =
-            "<p>📭 No hay notas todavía. Crea tu primera nota.</p>";
-
-        contador.innerText =
-            "Aún no tienes notas guardadas.";
-
-        return;
-    }
-
-
-    contador.innerText =
-        "📚 Tienes " +
-        notas.length +
-        " nota(s) guardada(s).";
-
-
-    notas.forEach(function(nota, indice) {
-
-        const tarjeta =
-            document.createElement("div");
-
-        tarjeta.className = "nota";
-
-
-        const titulo =
-            document.createElement("h3");
-
-        titulo.innerText =
-            (indice + 1) +
-            ". " +
-            nota.titulo;
-
-
-        const contenido =
-            document.createElement("p");
-
-        contenido.innerText =
-            nota.contenido;
-
-
-        const fecha =
-            document.createElement("div");
-
-        fecha.className = "fecha";
-
-        fecha.innerText =
-            "📅 " +
-            nota.fecha;
-
-
-        const eliminar =
-            document.createElement("button");
-
-        eliminar.className =
-            "boton-rojo";
-
-        eliminar.innerText =
-            "🗑 Eliminar";
-
-
-        eliminar.onclick = function() {
-
-            eliminarNota(indice);
-
-        };
-
-
-        tarjeta.appendChild(titulo);
-
-        tarjeta.appendChild(contenido);
-
-        tarjeta.appendChild(fecha);
-
-        tarjeta.appendChild(eliminar);
-
-        lista.appendChild(tarjeta);
-
-    });
-
-}
-
-
-
-function guardarNota() {
-
-    const titulo =
-        document.getElementById("titulo");
-
-    const contenido =
-        document.getElementById("contenido");
-
-
-    if (
-        titulo.value.trim() === "" ||
-        contenido.value.trim() === ""
-    ) {
-
-        alert(
-            "⚠️ Escribe un título y el contenido."
-        );
-
-        return;
-    }
-
-
-    const nuevaNota = {
-
-        titulo:
-            titulo.value.trim(),
-
-        contenido:
-            contenido.value.trim(),
-
-        fecha:
-            new Date().toLocaleString("es-CO")
-
-    };
-
-
-    notas.unshift(nuevaNota);
-
-
-    localStorage.setItem(
-        "misNotas",
-        JSON.stringify(notas)
-    );
-
-
-    titulo.value = "";
-
-    contenido.value = "";
-
-
-    aumentarInteracciones();
-
-    mostrarNotas();
-
-
-    alert(
-        "✅ Nota guardada correctamente."
-    );
-
-}
-
-
-
-function eliminarNota(indice) {
-
-    const confirmar =
-        confirm(
-            "¿Seguro que deseas eliminar esta nota?"
-        );
-
-
-    if (!confirmar) {
-        return;
-    }
-
-
-    notas.splice(indice, 1);
-
-
-    localStorage.setItem(
-        "misNotas",
-        JSON.stringify(notas)
-    );
-
-
-    mostrarNotas();
-
-}
-
-
-
-function preguntarAsistente() {
-
-    const pregunta =
-        document
-        .getElementById("pregunta")
-        .value
-        .trim()
-        .toLowerCase();
-
-
-    const respuesta =
-        document.getElementById("respuesta");
-
-
-    if (pregunta === "") {
-
-        respuesta.innerHTML =
-            "✍️ Escribe una pregunta.";
-
-        return;
-    }
-
-
-    if (notas.length === 0) {
-
-        respuesta.innerHTML =
-            "📭 Aún no tienes notas guardadas.";
-
-        return;
-    }
-
-
-    const palabras =
-        pregunta
-        .split(" ")
-        .filter(function(palabra) {
-
-            return palabra.length > 3;
-
-        });
-
-
-    let resultados = [];
-
-
-    notas.forEach(function(nota) {
-
-        const texto =
-            (
-                nota.titulo +
-                " " +
-                nota.contenido
-            ).toLowerCase();
-
-
-        let puntos = 0;
-
-
-        palabras.forEach(function(palabra) {
-
-            if (texto.includes(palabra)) {
-
-                puntos++;
-
-            }
-
-        });
-
-
-        if (puntos > 0) {
-
-            resultados.push({
-
-                nota: nota,
-
-                puntos: puntos
-
-            });
-
-        }
-
-    });
-
-
-    resultados.sort(function(a, b) {
-
-        return b.puntos - a.puntos;
-
-    });
-
-
-    if (resultados.length === 0) {
-
-        respuesta.innerHTML =
-            "🤔 No encontré una nota relacionada. " +
-            "Prueba con otras palabras.";
-
-        return;
-    }
-
-
-    const mejor =
-        resultados[0].nota;
-
-
-    respuesta.innerHTML =
-        "🤖 Encontré información relacionada " +
-        "en la nota:<br><br>" +
-
-        "<strong>" +
-        escaparHTML(mejor.titulo) +
-        "</strong><br><br>" +
-
-        escaparHTML(mejor.contenido);
-
-
-    aumentarInteracciones();
-
-}
-
-
-
-function escaparHTML(texto) {
-
-    const div =
-        document.createElement("div");
-
-    div.textContent =
-        texto;
-
-    return div.innerHTML;
-
-}
-
-
-
-function aumentarInteracciones() {
-
-    let cantidad =
-        parseInt(
-            localStorage.getItem(
-                "contadorInteraccionesDemo"
-            ) || "0"
-        );
-
-
-    cantidad++;
-
-
-    localStorage.setItem(
-        "contadorInteraccionesDemo",
-        cantidad
-    );
-
-}
-
-
-
-function registrarVisita() {
-
-    const yaContada =
-        sessionStorage.getItem(
-            "visitaRegistrada"
-        );
-
-
-    if (!yaContada) {
-
-        let visitas =
-            parseInt(
-                localStorage.getItem(
-                    "contadorVisitasDemo"
-                ) || "0"
-            );
-
-
-        visitas++;
-
-
-        localStorage.setItem(
-            "contadorVisitasDemo",
-            visitas
-        );
-
-
-        sessionStorage.setItem(
-            "visitaRegistrada",
-            "si"
-        );
-
-    }
-
-}
-
-
-
-function mostrarInstalacion() {
-
-    alert(
-
-        "📱 EN CELULAR\n\n" +
-
-        "1. Abre el sitio en Google Chrome.\n\n" +
-
-        "2. Toca los tres puntos ⋮.\n\n" +
-
-        "3. Pulsa 'Añadir a pantalla de inicio' " +
-        "o 'Instalar aplicación'.\n\n" +
-
-        "4. Confirma la instalación.\n\n" +
-
-        "💻 EN COMPUTADOR\n\n" +
-
-        "Busca el icono de instalación en la " +
-        "barra de direcciones de Chrome."
-
-    );
-
-}
-
-
-
-registrarVisita();
-
-mostrarNotas();
-
-
-</script>
-
+</div>
 
 </body>
 
