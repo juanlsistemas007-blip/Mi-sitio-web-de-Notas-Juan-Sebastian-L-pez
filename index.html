@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#080006">
-    <meta name="description" content="Mi Bloc de Notas Personal">
-    <title>Mi Bloc de Notas | Juan Sebastian López</title>
-    <link rel="stylesheet" href="estilo.css">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#080006"
+    >
+
+    <meta
+        name="description"
+        content="Mi Bloc de Notas Personal"
+    >
+
+    <title>
+        Mi Bloc de Notas | Juan Sebastian López
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="estilo.css"
+    >
+
 </head>
 
 <body>
@@ -14,6 +36,7 @@
 <div class="decor decor1"></div>
 <div class="decor decor2"></div>
 <div class="decor decor3"></div>
+
 
 <header class="top">
 
@@ -23,15 +46,34 @@
             id="profileImage"
             src="logotipe.jpg"
             alt="Foto de perfil"
+            onerror="this.style.display='none'; document.getElementById('profileJS').style.display='flex';"
         >
+
+        <div
+            id="profileJS"
+            class="profile-js"
+            style="display:none;"
+        >
+            JS
+        </div>
 
     </div>
 
-    <div class="initials">JS</div>
 
-    <h1>Juan Sebastian López</h1>
+    <div class="initials">
+        JS
+    </div>
 
-    <p class="subtitle">MI BLOC DE NOTAS</p>
+
+    <h1>
+        Juan Sebastian López
+    </h1>
+
+
+    <p class="subtitle">
+        MI BLOC DE NOTAS
+    </p>
+
 
     <p class="welcome">
         Mi espacio personal para guardar mis ideas,
@@ -43,11 +85,15 @@
 
 <main class="main-container">
 
+
     <!-- NUEVA NOTA -->
 
     <section class="note-panel">
 
-        <h2>📝 Nueva nota</h2>
+        <h2>
+            📝 Nueva nota
+        </h2>
+
 
         <input
             type="text"
@@ -55,18 +101,27 @@
             placeholder="Título de la nota"
         >
 
+
         <textarea
             id="noteText"
             placeholder="Escribe aquí tu nota..."
         ></textarea>
 
+
         <div class="note-buttons">
 
-            <button onclick="saveNote()" class="gold-btn">
+            <button
+                onclick="saveNote()"
+                class="gold-btn"
+            >
                 💾 Guardar nota
             </button>
 
-            <button onclick="clearForm()" class="dark-btn">
+
+            <button
+                onclick="clearForm()"
+                class="dark-btn"
+            >
                 Limpiar
             </button>
 
@@ -97,12 +152,13 @@
             📚 Mis notas
         </h2>
 
+
         <div id="notesContainer"></div>
 
     </section>
 
 
-    <!-- IA -->
+    <!-- ASISTENTE -->
 
     <section class="ai-panel">
 
@@ -110,50 +166,40 @@
             🤖
         </div>
 
-        <h2>Asistente IA</h2>
 
-        <p>
-            Escribe una pregunta o pídele ayuda con una nota.
+        <h2>
+            Asistente de Notas
+        </h2>
+
+
+        <p class="privacy-text">
+
+            🔐 Este asistente está diseñado para ayudarte
+            a organizar tus notas, guardarlas y proteger
+            tu información con extrema privacidad.
+
         </p>
+
 
         <textarea
             id="aiQuestion"
-            placeholder="Ejemplo: organiza esta nota..."
+            placeholder="Escribe aquí lo que necesitas organizar..."
         ></textarea>
+
 
         <button
             onclick="askAI()"
             class="gold-btn"
         >
-            🤖 Preguntar a la IA
+            🤖 Ayudarme con mi nota
         </button>
+
 
         <div
             id="aiResponse"
             class="ai-response"
         >
         </div>
-
-    </section>
-
-
-    <!-- INFORMACIÓN -->
-
-    <section class="info-panel">
-
-        <h2>🔐 Mi espacio personal</h2>
-
-        <p>
-            Este bloc de notas está diseñado para guardar
-            tus apuntes directamente en este dispositivo.
-        </p>
-
-        <button
-            onclick="openAdmin()"
-            class="admin-btn"
-        >
-            🔐 Panel administrador
-        </button>
 
     </section>
 
@@ -170,16 +216,26 @@
 
 <script>
 
-/* =========================================
+/* =====================================
    FOTO DE PERFIL
-========================================= */
+===================================== */
 
 const profileImage =
-    document.getElementById("profileImage");
+    document.getElementById(
+        "profileImage"
+    );
+
+
+const profileJS =
+    document.getElementById(
+        "profileJS"
+    );
 
 
 const savedPhoto =
-    localStorage.getItem("perfilBloc");
+    localStorage.getItem(
+        "perfilBloc"
+    );
 
 
 if (savedPhoto) {
@@ -190,35 +246,43 @@ if (savedPhoto) {
 }
 
 
-/* =========================================
+/* =====================================
    NOTAS
-========================================= */
+===================================== */
 
 let notes =
     JSON.parse(
-        localStorage.getItem("misNotas")
+        localStorage.getItem(
+            "misNotas"
+        )
     ) || [];
 
 
 let editingId = null;
 
 
-/* =========================================
+/* =====================================
    GUARDAR NOTA
-========================================= */
+===================================== */
 
 function saveNote() {
 
     const title =
-        document.getElementById(
-            "noteTitle"
-        ).value.trim();
+        document
+            .getElementById(
+                "noteTitle"
+            )
+            .value
+            .trim();
 
 
     const text =
-        document.getElementById(
-            "noteText"
-        ).value.trim();
+        document
+            .getElementById(
+                "noteText"
+            )
+            .value
+            .trim();
 
 
     if (!title && !text) {
@@ -228,7 +292,6 @@ function saveNote() {
         );
 
         return;
-
     }
 
 
@@ -249,9 +312,11 @@ function saveNote() {
                 text;
 
             note.date =
-                new Date().toLocaleString();
+                new Date()
+                    .toLocaleString();
 
         }
+
 
         editingId = null;
 
@@ -268,7 +333,8 @@ function saveNote() {
                 text,
 
             date:
-                new Date().toLocaleString()
+                new Date()
+                    .toLocaleString()
 
         });
 
@@ -288,9 +354,9 @@ function saveNote() {
 }
 
 
-/* =========================================
+/* =====================================
    MOSTRAR NOTAS
-========================================= */
+===================================== */
 
 function showNotes() {
 
@@ -301,9 +367,12 @@ function showNotes() {
 
 
     const search =
-        document.getElementById(
-            "searchInput"
-        ).value.toLowerCase();
+        document
+            .getElementById(
+                "searchInput"
+            )
+            .value
+            .toLowerCase();
 
 
     container.innerHTML = "";
@@ -335,14 +404,13 @@ function showNotes() {
 
                 <br><br>
 
-                No hay notas para mostrar.
+                Todavía no tienes notas guardadas.
 
             </div>
 
         `;
 
         return;
-
     }
 
 
@@ -402,9 +470,9 @@ function showNotes() {
 }
 
 
-/* =========================================
+/* =====================================
    EDITAR
-========================================= */
+===================================== */
 
 function editNote(id) {
 
@@ -444,19 +512,20 @@ function editNote(id) {
 }
 
 
-/* =========================================
+/* =====================================
    ELIMINAR
-========================================= */
+===================================== */
 
 function deleteNote(id) {
 
-    const confirmDelete =
-        confirm(
+    if (
+        !confirm(
             "¿Quieres eliminar esta nota?"
-        );
+        )
+    ) {
 
-
-    if (!confirmDelete) return;
+        return;
+    }
 
 
     notes =
@@ -476,9 +545,9 @@ function deleteNote(id) {
 }
 
 
-/* =========================================
+/* =====================================
    LIMPIAR
-========================================= */
+===================================== */
 
 function clearForm() {
 
@@ -497,9 +566,9 @@ function clearForm() {
 }
 
 
-/* =========================================
-   PROTEGER HTML
-========================================= */
+/* =====================================
+   SEGURIDAD DEL TEXTO
+===================================== */
 
 function escapeHTML(text) {
 
@@ -518,47 +587,19 @@ function escapeHTML(text) {
 }
 
 
-/* =========================================
-   PANEL ADMIN
-========================================= */
-
-function openAdmin() {
-
-    const password =
-        prompt(
-            "🔐 Introduce la contraseña del administrador:"
-        );
-
-
-    if (
-        password ===
-        "JuanAdmin2026"
-    ) {
-
-        window.location.href =
-            "admin.html";
-
-    } else {
-
-        alert(
-            "❌ Contraseña incorrecta."
-        );
-
-    }
-
-}
-
-
-/* =========================================
+/* =====================================
    ASISTENTE
-========================================= */
+===================================== */
 
 function askAI() {
 
     const question =
-        document.getElementById(
-            "aiQuestion"
-        ).value.trim();
+        document
+            .getElementById(
+                "aiQuestion"
+            )
+            .value
+            .trim();
 
 
     const response =
@@ -570,24 +611,17 @@ function askAI() {
     if (!question) {
 
         response.innerHTML =
-            "Escribe algo para ayudarte.";
+            "Escribe una pregunta o una idea para ayudarte.";
 
         return;
-
     }
-
-
-    /*
-       Esta es una IA local sencilla.
-       No necesita API ni pagar.
-    */
 
 
     const q =
         question.toLowerCase();
 
 
-    let answer = "";
+    let answer;
 
 
     if (
@@ -596,7 +630,7 @@ function askAI() {
     ) {
 
         answer =
-            "Puedo ayudarte a organizar la información. Divide tu nota en título, ideas principales, tareas y pendientes.";
+            "Puedo ayudarte a organizar tu información por temas, prioridades y tareas.";
 
     }
 
@@ -606,7 +640,7 @@ function askAI() {
     ) {
 
         answer =
-            "Para crear un buen resumen, conserva las ideas principales y elimina información repetida o secundaria.";
+            "Puedes crear un resumen conservando solamente las ideas principales de tu nota.";
 
     }
 
@@ -616,32 +650,47 @@ function askAI() {
     ) {
 
         answer =
-            "Puedes convertir esta información en una lista de tareas: 1. Identificar lo importante. 2. Ordenarlo por prioridad. 3. Marcar cada tarea terminada.";
+            "Puedes convertir tu nota en una lista de tareas y ordenarlas según su prioridad.";
 
     }
 
     else {
 
         answer =
-            "Puedo ayudarte a organizar tus ideas, resumir textos, crear listas de tareas y mejorar la estructura de tus notas. Para una IA en línea completa necesitaríamos conectar una API.";
+            "Puedo ayudarte a organizar tus ideas, preparar listas, ordenar notas y mejorar la estructura de tus apuntes.";
 
     }
 
 
-    response.innerHTML =
-        "🤖 <strong>Asistente:</strong><br><br>" +
-        answer;
+    response.innerHTML = `
+
+        <strong>
+            🤖 Asistente:
+        </strong>
+
+        <br><br>
+
+        ${answer}
+
+        <br><br>
+
+        🔐 Tus notas se almacenan localmente
+        en este dispositivo y no se envían
+        automáticamente a terceros.
+
+    `;
 
 }
 
 
-/* =========================================
+/* =====================================
    INICIAR
-========================================= */
+===================================== */
 
 showNotes();
 
 </script>
 
 </body>
+
 </html>
