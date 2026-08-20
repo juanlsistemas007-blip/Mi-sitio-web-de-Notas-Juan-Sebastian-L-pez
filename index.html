@@ -29,6 +29,19 @@
         href="estilo.css"
     >
 
+    <!-- =================================
+         UMAMI - ESTADÍSTICAS
+         DESPUÉS PONEMOS TUS DATOS AQUÍ
+    ================================== -->
+
+    <!--
+    <script
+        defer
+        src="https://cloud.umami.is/script.js"
+        data-website-id="TU_WEBSITE_ID"
+    ></script>
+    -->
+
 </head>
 
 <body>
@@ -46,13 +59,15 @@
             id="profileImage"
             src="logotipe.jpg"
             alt="Foto de perfil"
-            onerror="this.style.display='none'; document.getElementById('profileJS').style.display='flex';"
+            onerror="
+                this.style.display='none';
+                document.getElementById('profileJS').style.display='flex';
+            "
         >
 
         <div
             id="profileJS"
             class="profile-js"
-            style="display:none;"
         >
             JS
         </div>
@@ -86,7 +101,9 @@
 <main class="main-container">
 
 
-    <!-- NUEVA NOTA -->
+    <!-- =================================
+         NUEVA NOTA
+    ================================== -->
 
     <section class="note-panel">
 
@@ -130,7 +147,9 @@
     </section>
 
 
-    <!-- BUSCADOR -->
+    <!-- =================================
+         BUSCADOR
+    ================================== -->
 
     <section class="search-panel">
 
@@ -144,7 +163,9 @@
     </section>
 
 
-    <!-- NOTAS -->
+    <!-- =================================
+         NOTAS
+    ================================== -->
 
     <section>
 
@@ -158,7 +179,9 @@
     </section>
 
 
-    <!-- ASISTENTE -->
+    <!-- =================================
+         ASISTENTE
+    ================================== -->
 
     <section class="ai-panel">
 
@@ -174,9 +197,9 @@
 
         <p class="privacy-text">
 
-            🔐 Este asistente está diseñado para ayudarte
-            a organizar tus notas, guardarlas y proteger
-            tu información con extrema privacidad.
+            🔐 Este asistente te ayuda a organizar
+            tus notas y mantenerlas protegidas
+            con máxima privacidad.
 
         </p>
 
@@ -198,8 +221,7 @@
         <div
             id="aiResponse"
             class="ai-response"
-        >
-        </div>
+        ></div>
 
     </section>
 
@@ -221,27 +243,26 @@
 ===================================== */
 
 const profileImage =
-    document.getElementById(
-        "profileImage"
-    );
-
+    document.getElementById("profileImage");
 
 const profileJS =
-    document.getElementById(
-        "profileJS"
-    );
+    document.getElementById("profileJS");
 
 
 const savedPhoto =
-    localStorage.getItem(
-        "perfilBloc"
-    );
+    localStorage.getItem("perfilBloc");
 
 
 if (savedPhoto) {
 
     profileImage.src =
         savedPhoto;
+
+    profileImage.style.display =
+        "block";
+
+    profileJS.style.display =
+        "none";
 
 }
 
@@ -252,9 +273,7 @@ if (savedPhoto) {
 
 let notes =
     JSON.parse(
-        localStorage.getItem(
-            "misNotas"
-        )
+        localStorage.getItem("misNotas")
     ) || [];
 
 
@@ -269,18 +288,14 @@ function saveNote() {
 
     const title =
         document
-            .getElementById(
-                "noteTitle"
-            )
+            .getElementById("noteTitle")
             .value
             .trim();
 
 
     const text =
         document
-            .getElementById(
-                "noteText"
-            )
+            .getElementById("noteText")
             .value
             .trim();
 
@@ -292,6 +307,7 @@ function saveNote() {
         );
 
         return;
+
     }
 
 
@@ -411,6 +427,7 @@ function showNotes() {
         `;
 
         return;
+
     }
 
 
@@ -461,9 +478,7 @@ function showNotes() {
         `;
 
 
-        container.appendChild(
-            article
-        );
+        container.appendChild(article);
 
     });
 
@@ -525,6 +540,7 @@ function deleteNote(id) {
     ) {
 
         return;
+
     }
 
 
@@ -567,15 +583,13 @@ function clearForm() {
 
 
 /* =====================================
-   SEGURIDAD DEL TEXTO
+   SEGURIDAD HTML
 ===================================== */
 
 function escapeHTML(text) {
 
     const div =
-        document.createElement(
-            "div"
-        );
+        document.createElement("div");
 
 
     div.textContent =
@@ -611,9 +625,10 @@ function askAI() {
     if (!question) {
 
         response.innerHTML =
-            "Escribe una pregunta o una idea para ayudarte.";
+            "Escribe una pregunta o una idea.";
 
         return;
+
     }
 
 
@@ -630,7 +645,7 @@ function askAI() {
     ) {
 
         answer =
-            "Puedo ayudarte a organizar tu información por temas, prioridades y tareas.";
+            "Puedes organizar esta información por temas, prioridades y tareas.";
 
     }
 
@@ -640,7 +655,7 @@ function askAI() {
     ) {
 
         answer =
-            "Puedes crear un resumen conservando solamente las ideas principales de tu nota.";
+            "Puedes crear un resumen conservando las ideas principales de tu nota.";
 
     }
 
@@ -650,14 +665,14 @@ function askAI() {
     ) {
 
         answer =
-            "Puedes convertir tu nota en una lista de tareas y ordenarlas según su prioridad.";
+            "Puedes convertir tus apuntes en una lista de tareas y ordenarlas por prioridad.";
 
     }
 
     else {
 
         answer =
-            "Puedo ayudarte a organizar tus ideas, preparar listas, ordenar notas y mejorar la estructura de tus apuntes.";
+            "Puedo ayudarte a organizar tus ideas, preparar listas y mejorar la estructura de tus apuntes.";
 
     }
 
@@ -674,9 +689,8 @@ function askAI() {
 
         <br><br>
 
-        🔐 Tus notas se almacenan localmente
-        en este dispositivo y no se envían
-        automáticamente a terceros.
+        🔐 Tus notas se guardan localmente
+        en este dispositivo.
 
     `;
 
@@ -684,7 +698,7 @@ function askAI() {
 
 
 /* =====================================
-   INICIAR
+   INICIO
 ===================================== */
 
 showNotes();
