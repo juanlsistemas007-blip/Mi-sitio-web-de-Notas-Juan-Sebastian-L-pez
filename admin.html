@@ -12,16 +12,11 @@
 
     <meta
         name="theme-color"
-        content="#240010"
-    >
-
-    <meta
-        name="description"
-        content="Panel privado de Mi Bloc de Notas"
+        content="#080006"
     >
 
     <title>
-        Panel Privado | Juan Sebastian López
+        Administrador | Mi Bloc de Notas
     </title>
 
     <link
@@ -31,83 +26,17 @@
 
 </head>
 
+
 <body class="admin-page">
 
-
-<!-- =================================
-     DECORACIÓN
-================================= -->
 
 <div class="decor decor1"></div>
 <div class="decor decor2"></div>
 <div class="decor decor3"></div>
 
 
-<!-- =================================
-     LOGIN
-================================= -->
+<main class="admin-content">
 
-<section
-    id="loginScreen"
-    class="admin-login"
->
-
-    <div class="login-logo">
-        JS
-    </div>
-
-    <h1>
-        Panel Privado
-    </h1>
-
-    <p>
-        Mi Bloc de Notas
-    </p>
-
-    <div class="login-box">
-
-        <label for="adminPassword">
-            🔐 Contraseña
-        </label>
-
-        <input
-            type="password"
-            id="adminPassword"
-            placeholder="Escribe tu contraseña"
-            autocomplete="current-password"
-        >
-
-        <button
-            class="admin-main-button"
-            onclick="loginAdmin()"
-        >
-            🔓 Entrar al administrador
-        </button>
-
-        <div
-            id="loginError"
-            class="login-error"
-        ></div>
-
-    </div>
-
-</section>
-
-
-<!-- =================================
-     ADMINISTRADOR
-================================= -->
-
-<main
-    id="adminPanel"
-    class="admin-content"
-    style="display:none;"
->
-
-
-<!-- =================================
-     ENCABEZADO
-================================= -->
 
 <header class="admin-top">
 
@@ -116,181 +45,94 @@
     </div>
 
     <h1>
-        Panel Privado
+        Mi Administrador
     </h1>
 
     <p>
-        Administración de Mi Bloc de Notas
+        Estadísticas de Mi Bloc de Notas
     </p>
-
-    <button
-        class="logout-button"
-        onclick="logoutAdmin()"
-    >
-        🚪 Cerrar sesión
-    </button>
 
 </header>
 
 
 <!-- =================================
-     FOTO DE PERFIL
+     VISITANTES
 ================================= -->
 
 <section class="admin-card">
 
     <h2>
-        🖼️ Foto de perfil
+        👥 Visitantes
     </h2>
 
     <p>
-        Sube una fotografía desde tu celular
-        o computador y selecciona qué parte
-        quieres mostrar.
+        Aquí puedes consultar las personas
+        que han visitado tu página.
     </p>
 
-
-    <div class="admin-profile-preview">
-
-        <div
-            id="adminProfilePreview"
-            class="admin-profile-circle"
-        >
-
-            <div class="profile-js-admin">
-                JS
-            </div>
-
-        </div>
-
-    </div>
+</section>
 
 
-    <div class="upload-area">
+<!-- =================================
+     DISPOSITIVOS
+================================= -->
 
-        <label
-            for="profileUpload"
-            class="upload-button"
-        >
-            📷 Elegir foto
-        </label>
+<section class="admin-card">
 
-        <input
-            type="file"
-            id="profileUpload"
-            accept="image/jpeg,image/jpg,image/png,image/webp"
-            hidden
-        >
+    <h2>
+        📱 Dispositivos
+    </h2>
 
-    </div>
+    <div class="admin-stats">
 
+        <div class="stat-box">
 
-    <!-- EDITOR DE FOTO -->
+            <strong>
+                📱
+            </strong>
 
-    <div
-        id="photoEditor"
-        class="photo-editor"
-        style="display:none;"
-    >
-
-        <h3>
-            ✂️ Ajustar fotografía
-        </h3>
-
-
-        <p>
-            Usa el zoom y mueve la imagen
-            para elegir la parte que quieres mostrar.
-        </p>
-
-
-        <div class="crop-container">
-
-            <img
-                id="cropImage"
-                src=""
-                alt="Vista previa"
-            >
+            <span>
+                Celulares
+            </span>
 
         </div>
 
 
-        <label for="zoomRange">
-            🔍 Tamaño de la foto
-        </label>
+        <div class="stat-box">
 
-        <input
-            type="range"
-            id="zoomRange"
-            min="100"
-            max="300"
-            value="100"
-            class="zoom-range"
-        >
+            <strong>
+                💻
+            </strong>
 
-
-        <div class="photo-controls">
-
-            <button
-                type="button"
-                class="admin-action"
-                onclick="movePhoto('up')"
-            >
-                ⬆️
-            </button>
-
-            <button
-                type="button"
-                class="admin-action"
-                onclick="movePhoto('left')"
-            >
-                ⬅️
-            </button>
-
-            <button
-                type="button"
-                class="admin-action"
-                onclick="movePhoto('center')"
-            >
-                🎯
-            </button>
-
-            <button
-                type="button"
-                class="admin-action"
-                onclick="movePhoto('right')"
-            >
-                ➡️
-            </button>
-
-            <button
-                type="button"
-                class="admin-action"
-                onclick="movePhoto('down')"
-            >
-                ⬇️
-            </button>
+            <span>
+                Computadores
+            </span>
 
         </div>
 
 
-        <div class="photo-buttons">
+        <div class="stat-box">
 
-            <button
-                type="button"
-                class="save-photo-button"
-                onclick="saveProfilePhoto()"
-            >
-                💾 Guardar foto
-            </button>
+            <strong>
+                🌐
+            </strong>
 
-            <button
-                type="button"
-                class="cancel-photo-button"
-                onclick="cancelPhoto()"
-            >
-                ❌ Cancelar
-            </button>
+            <span>
+                Navegadores
+            </span>
+
+        </div>
+
+
+        <div class="stat-box">
+
+            <strong>
+                🌎
+            </strong>
+
+            <span>
+                Países
+            </span>
 
         </div>
 
@@ -300,7 +142,37 @@
 
 
 <!-- =================================
-     INFORMACIÓN
+     ESTADISTICAS
+================================= -->
+
+<section class="admin-card">
+
+    <h2>
+        📊 Estadísticas
+    </h2>
+
+    <p>
+        Umami permite consultar visitantes,
+        visitas, páginas vistas, duración
+        de sesión, dispositivos, navegadores
+        y países. :contentReference[oaicite:1]{index=1}
+    </p>
+
+
+    <a
+        href="https://cloud.umami.is/login"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="admin-stat-button"
+    >
+        📊 Abrir mis estadísticas
+    </a>
+
+</section>
+
+
+<!-- =================================
+     PRIVACIDAD
 ================================= -->
 
 <section class="admin-card">
@@ -310,16 +182,12 @@
     </h2>
 
     <p>
-        Las notas de este Bloc se guardan
-        localmente en el navegador de este
-        dispositivo mediante almacenamiento
-        local.
-    </p>
 
-    <p class="privacy-warning">
-
-        ⚠️ No compartas este dispositivo
-        con personas en las que no confíes.
+        El sistema de estadísticas está
+        diseñado para respetar la privacidad.
+        Umami indica que no utiliza cookies,
+        fingerprinting ni seguimiento entre
+        sitios. :contentReference[oaicite:2]{index=2}
 
     </p>
 
@@ -327,73 +195,29 @@
 
 
 <!-- =================================
-     RESUMEN
+     NOTAS LOCALES
 ================================= -->
 
 <section class="admin-card">
 
     <h2>
-        📊 Resumen
+        📝 Notas de este dispositivo
     </h2>
 
-    <div class="admin-stats">
-
-        <div class="stat-box">
-
-            <strong id="totalNotes">
-                0
-            </strong>
-
-            <span>
-                Notas
-            </span>
-
-        </div>
-
-
-        <div class="stat-box">
-
-            <strong id="totalCharacters">
-                0
-            </strong>
-
-            <span>
-                Caracteres
-            </span>
-
-        </div>
-
+    <div
+        id="localNoteCount"
+        class="local-count"
+    >
+        0 notas
     </div>
 
 </section>
 
 
-<!-- =================================
-     ADMINISTRAR NOTAS
-================================= -->
-
-<section class="admin-card">
-
-    <h2>
-        📝 Administrar notas
-    </h2>
-
-    <div
-        id="adminNotesContainer"
-        class="admin-notes"
-    ></div>
-
-</section>
-
-
-<!-- =================================
-     PIE
-================================= -->
-
 <footer class="admin-footer">
 
     © 2026 Juan Sebastian López |
-    Panel privado
+    Administrador
 
 </footer>
 
@@ -403,798 +227,31 @@
 
 <script>
 
-/* =========================================
-   CONTRASEÑA
-========================================= */
+function updateLocalNotes() {
 
-const ADMIN_PASSWORD =
-    "JuanAdmin2026";
-
-
-/* =========================================
-   VARIABLES
-========================================= */
-
-let notes =
-    JSON.parse(
-        localStorage.getItem("misNotas")
-    ) || [];
-
-
-let profileImageData =
-    localStorage.getItem("perfilBloc") || "";
-
-
-let currentImage = null;
-
-
-let photoX = 0;
-
-let photoY = 0;
-
-let photoZoom = 100;
-
-
-/* =========================================
-   LOGIN
-========================================= */
-
-function loginAdmin() {
-
-    const password =
-        document
-            .getElementById("adminPassword")
-            .value;
-
-
-    const error =
-        document
-            .getElementById("loginError");
-
-
-    if (
-        password === ADMIN_PASSWORD
-    ) {
-
-        sessionStorage.setItem(
-            "adminLogged",
-            "true"
-        );
-
-
-        document
-            .getElementById("loginScreen")
-            .style.display = "none";
-
-
-        document
-            .getElementById("adminPanel")
-            .style.display = "block";
-
-
-        loadAdmin();
-
-    } else {
-
-        error.textContent =
-            "❌ Contraseña incorrecta.";
-
-    }
-
-}
-
-
-/* =========================================
-   ENTER PARA LOGIN
-========================================= */
-
-document
-    .getElementById("adminPassword")
-    .addEventListener(
-        "keydown",
-        function(event) {
-
-            if (
-                event.key === "Enter"
-            ) {
-
-                loginAdmin();
-
-            }
-
-        }
-    );
-
-
-/* =========================================
-   CERRAR SESIÓN
-========================================= */
-
-function logoutAdmin() {
-
-    sessionStorage.removeItem(
-        "adminLogged"
-    );
-
-
-    location.reload();
-
-}
-
-
-/* =========================================
-   VERIFICAR SESIÓN
-========================================= */
-
-function checkLogin() {
-
-    if (
-        sessionStorage.getItem(
-            "adminLogged"
-        ) === "true"
-    ) {
-
-        document
-            .getElementById("loginScreen")
-            .style.display = "none";
-
-
-        document
-            .getElementById("adminPanel")
-            .style.display = "block";
-
-
-        loadAdmin();
-
-    }
-
-}
-
-
-/* =========================================
-   CARGAR ADMIN
-========================================= */
-
-function loadAdmin() {
-
-    notes =
+    const notes =
         JSON.parse(
             localStorage.getItem("misNotas")
         ) || [];
 
 
-    profileImageData =
-        localStorage.getItem(
-            "perfilBloc"
-        ) || "";
-
-
-    showProfile();
-
-    showAdminNotes();
-
-    updateStats();
-
-}
-
-
-/* =========================================
-   MOSTRAR FOTO
-========================================= */
-
-function showProfile() {
-
-    const preview =
-        document
-            .getElementById(
-                "adminProfilePreview"
-            );
-
-
-    if (
-        profileImageData
-    ) {
-
-        preview.innerHTML = `
-
-            <img
-                src="${profileImageData}"
-                alt="Foto de perfil"
-            >
-
-        `;
-
-    } else {
-
-        preview.innerHTML = `
-
-            <div class="profile-js-admin">
-                JS
-            </div>
-
-        `;
-
-    }
-
-}
-
-
-/* =========================================
-   SELECCIONAR FOTO
-========================================= */
-
-document
-    .getElementById("profileUpload")
-    .addEventListener(
-        "change",
-        function(event) {
-
-            const file =
-                event.target.files[0];
-
-
-            if (!file) {
-
-                return;
-
-            }
-
-
-            if (
-                !file.type.startsWith("image/")
-            ) {
-
-                alert(
-                    "Selecciona una imagen."
-                );
-
-                return;
-
-            }
-
-
-            const reader =
-                new FileReader();
-
-
-            reader.onload =
-                function(e) {
-
-                    currentImage =
-                        e.target.result;
-
-
-                    photoX = 0;
-
-                    photoY = 0;
-
-                    photoZoom = 100;
-
-
-                    document
-                        .getElementById(
-                            "cropImage"
-                        )
-                        .src =
-                        currentImage;
-
-
-                    document
-                        .getElementById(
-                            "zoomRange"
-                        )
-                        .value =
-                        100;
-
-
-                    document
-                        .getElementById(
-                            "photoEditor"
-                        )
-                        .style.display =
-                        "block";
-
-
-                    updateCrop();
-
-                };
-
-
-            reader.readAsDataURL(file);
-
-        }
-    );
-
-
-/* =========================================
-   ACTUALIZAR RECORTE
-========================================= */
-
-function updateCrop() {
-
-    const image =
-        document
-            .getElementById(
-                "cropImage"
-            );
-
-
-    image.style.transform =
-        `
-        translate(
-            ${photoX}px,
-            ${photoY}px
-        )
-        scale(
-            ${photoZoom / 100}
-        )
-        `;
-
-}
-
-
-/* =========================================
-   ZOOM
-========================================= */
-
-document
-    .getElementById("zoomRange")
-    .addEventListener(
-        "input",
-        function() {
-
-            photoZoom =
-                Number(this.value);
-
-
-            updateCrop();
-
-        }
-    );
-
-
-/* =========================================
-   MOVER FOTO
-========================================= */
-
-function movePhoto(direction) {
-
-    const step = 15;
-
-
-    if (
-        direction === "up"
-    ) {
-
-        photoY -= step;
-
-    }
-
-
-    if (
-        direction === "down"
-    ) {
-
-        photoY += step;
-
-    }
-
-
-    if (
-        direction === "left"
-    ) {
-
-        photoX -= step;
-
-    }
-
-
-    if (
-        direction === "right"
-    ) {
-
-        photoX += step;
-
-    }
-
-
-    if (
-        direction === "center"
-    ) {
-
-        photoX = 0;
-
-        photoY = 0;
-
-        photoZoom = 100;
-
-        document
-            .getElementById(
-                "zoomRange"
-            )
-            .value =
-            100;
-
-    }
-
-
-    updateCrop();
-
-}
-
-
-/* =========================================
-   GUARDAR FOTO
-========================================= */
-
-function saveProfilePhoto() {
-
-    const image =
-        document
-            .getElementById(
-                "cropImage"
-            );
-
-
-    if (
-        !image.src
-    ) {
-
-        alert(
-            "Primero selecciona una foto."
+    document.getElementById(
+        "localNoteCount"
+    ).textContent =
+        notes.length +
+        (
+            notes.length === 1
+                ? " nota"
+                : " notas"
         );
 
-        return;
-
-    }
-
-
-    const canvas =
-        document.createElement(
-            "canvas"
-        );
-
-
-    const size = 700;
-
-
-    canvas.width = size;
-
-    canvas.height = size;
-
-
-    const ctx =
-        canvas.getContext("2d");
-
-
-    ctx.fillStyle =
-        "#100006";
-
-
-    ctx.fillRect(
-        0,
-        0,
-        size,
-        size
-    );
-
-
-    const img =
-        new Image();
-
-
-    img.onload =
-        function() {
-
-            const scale =
-                Math.max(
-                    size / img.width,
-                    size / img.height
-                );
-
-
-            const width =
-                img.width * scale;
-
-
-            const height =
-                img.height * scale;
-
-
-            const x =
-                (size - width) / 2;
-
-
-            const y =
-                (size - height) / 2;
-
-
-            ctx.save();
-
-
-            ctx.beginPath();
-
-
-            ctx.arc(
-                size / 2,
-                size / 2,
-                size / 2,
-                0,
-                Math.PI * 2
-            );
-
-
-            ctx.clip();
-
-
-            ctx.drawImage(
-                img,
-                x + photoX,
-                y + photoY,
-                width * (photoZoom / 100),
-                height * (photoZoom / 100)
-            );
-
-
-            ctx.restore();
-
-
-            const finalImage =
-                canvas.toDataURL(
-                    "image/jpeg",
-                    0.90
-                );
-
-
-            localStorage.setItem(
-                "perfilBloc",
-                finalImage
-            );
-
-
-            profileImageData =
-                finalImage;
-
-
-            showProfile();
-
-
-            document
-                .getElementById(
-                    "photoEditor"
-                )
-                .style.display =
-                "none";
-
-
-            alert(
-                "✅ Foto guardada correctamente."
-            );
-
-        };
-
-
-    img.src =
-        currentImage;
-
 }
 
 
-/* =========================================
-   CANCELAR FOTO
-========================================= */
-
-function cancelPhoto() {
-
-    currentImage = null;
-
-
-    document
-        .getElementById(
-            "profileUpload"
-        )
-        .value = "";
-
-
-    document
-        .getElementById(
-            "photoEditor"
-        )
-        .style.display =
-        "none";
-
-}
-
-
-/* =========================================
-   MOSTRAR NOTAS
-========================================= */
-
-function showAdminNotes() {
-
-    const container =
-        document
-            .getElementById(
-                "adminNotesContainer"
-            );
-
-
-    container.innerHTML = "";
-
-
-    if (
-        notes.length === 0
-    ) {
-
-        container.innerHTML = `
-
-            <div class="empty">
-                📭 No hay notas guardadas.
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    notes.forEach(
-        function(note) {
-
-            const card =
-                document.createElement(
-                    "div"
-                );
-
-
-            card.className =
-                "admin-note";
-
-
-            card.innerHTML = `
-
-                <h3>
-                    ${escapeHTML(note.title)}
-                </h3>
-
-                <small>
-                    ${escapeHTML(note.date)}
-                </small>
-
-                <p>
-                    ${escapeHTML(note.text)}
-                </p>
-
-                <button
-                    class="delete-admin"
-                    onclick="deleteAdminNote(${note.id})"
-                >
-                    🗑️ Eliminar nota
-                </button>
-
-            `;
-
-
-            container.appendChild(
-                card
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   ELIMINAR NOTA
-========================================= */
-
-function deleteAdminNote(id) {
-
-    if (
-        !confirm(
-            "¿Seguro que quieres eliminar esta nota?"
-        )
-    ) {
-
-        return;
-
-    }
-
-
-    notes =
-        notes.filter(
-            function(note) {
-
-                return note.id !== id;
-
-            }
-        );
-
-
-    localStorage.setItem(
-        "misNotas",
-        JSON.stringify(notes)
-    );
-
-
-    showAdminNotes();
-
-    updateStats();
-
-}
-
-
-/* =========================================
-   ESTADÍSTICAS
-========================================= */
-
-function updateStats() {
-
-    const total =
-        notes.length;
-
-
-    const characters =
-        notes.reduce(
-            function(total, note) {
-
-                return total +
-                    note.title.length +
-                    note.text.length;
-
-            },
-            0
-        );
-
-
-    document
-        .getElementById(
-            "totalNotes"
-        )
-        .textContent =
-        total;
-
-
-    document
-        .getElementById(
-            "totalCharacters"
-        )
-        .textContent =
-        characters;
-
-}
-
-
-/* =========================================
-   SEGURIDAD DE TEXTO
-========================================= */
-
-function escapeHTML(text) {
-
-    const div =
-        document.createElement(
-            "div"
-        );
-
-
-    div.textContent =
-        text;
-
-
-    return div.innerHTML;
-
-}
-
-
-/* =========================================
-   INICIAR
-========================================= */
-
-checkLogin();
+updateLocalNotes();
 
 </script>
+
 
 </body>
 
